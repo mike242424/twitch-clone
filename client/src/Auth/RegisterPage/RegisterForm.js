@@ -3,13 +3,11 @@ import axios from 'axios';
 import { validateUsername } from '../../validation/validateUsername';
 import { validatePassword } from '../../validation/validatePassword';
 import { validateEmail } from '../../validation/validateEmail';
-import Loading from '../../Components/Loading';
 
-const RegisterForm = () => {
+const RegisterForm = ({ setIsLoading }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
   async function handleSubmit(e) {
@@ -54,10 +52,6 @@ const RegisterForm = () => {
     } finally {
       setIsLoading(false);
     }
-  }
-
-  if (isLoading) {
-    return <Loading />;
   }
 
   return (

@@ -2,18 +2,15 @@ import { useState } from 'react';
 import axios from 'axios';
 import { validateUsername } from '../../validation/validateUsername';
 import { validatePassword } from '../../validation/validatePassword';
-import Loading from '../../Components/Loading';
 
-const LoginForm = () => {
+const LoginForm = ({ setIsLoading }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
   async function handleSubmit(e) {
     try {
       e.preventDefault();
-
       setError('');
 
       if (!validateUsername(username)) {
@@ -47,10 +44,6 @@ const LoginForm = () => {
     } finally {
       setIsLoading(false);
     }
-  }
-
-  if (isLoading) {
-    return <Loading />;
   }
 
   return (

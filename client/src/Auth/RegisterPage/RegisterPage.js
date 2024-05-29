@@ -1,11 +1,19 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import RegisterForm from './RegisterForm';
+import Loading from '../../components/Loading';
 
 const RegisterPage = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <div className="flex flex-col justify-center items-center w-full mt-20">
       <div className="bg-slate-500 border-2 border-slate-600 w-10/12 sm:w-6/12 p-10 px-20 text-center">
-        <RegisterForm />
+        <RegisterForm setIsLoading={setIsLoading} />
         <span className="text-white">
           Already have an account?{' '}
           <Link
