@@ -4,11 +4,17 @@ import RegisterForm from './RegisterForm';
 const RegisterPage = () => {
   return (
     <div className="flex flex-col justify-center items-center w-full mt-20">
-      <div className="border-2 border-slate-500 w-6/12 p-10 px-20 text-center">
+      <div className="bg-slate-500 border-2 border-slate-600 w-10/12 sm:w-6/12 p-10 px-20 text-center">
         <RegisterForm />
-        <Link className="text-slate-500" to="http://localhost:3000/login">
-          Already have an account?
-        </Link>
+        <span className="text-white">
+          Already have an account?{' '}
+          <Link
+            className="text-slate-800 font-bold"
+            to="http://localhost:3000/login"
+          >
+            Login
+          </Link>
+        </span>
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ const RegisterForm = () => {
   return (
     <div>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 mb-20">
-        <h1 className="text-center font-bold text-3xl text-slate-600 mb-10">
+        <h1 className="text-center font-bold text-3xl  mb-10 text-white">
           Register
         </h1>
         <input
@@ -37,7 +37,7 @@ const RegisterForm = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button
-          className="text-white bg-slate-600 rounded-lg p-2"
+          className="text-white bg-slate-800 rounded-lg p-2"
           type="submit"
         >
           Register

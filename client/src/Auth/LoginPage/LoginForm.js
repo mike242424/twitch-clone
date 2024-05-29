@@ -11,7 +11,7 @@ const LoginForm = () => {
   return (
     <div>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 mb-20">
-        <h1 className="text-center font-bold text-3xl text-slate-600 mb-10">
+        <h1 className="text-center font-bold text-3xl text-white mb-10">
           Login
         </h1>
         <input
@@ -29,7 +29,7 @@ const LoginForm = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button
-          className="text-white bg-slate-600 rounded-lg p-2"
+          className="text-white bg-slate-800 rounded-lg p-2"
           type="submit"
         >
           Login
