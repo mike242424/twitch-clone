@@ -8,11 +8,13 @@ const RegisterForm = ({ setIsLoading }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
 
   async function handleSubmit(e) {
     try {
       e.preventDefault();
+      setIsSubmitting(true);
       setError('');
 
       if (!validateUsername(username)) {
@@ -51,6 +53,7 @@ const RegisterForm = ({ setIsLoading }) => {
       setError(error.response.data.error);
     } finally {
       setIsLoading(false);
+      setIsSubmitting(false);
     }
   }
 
@@ -83,6 +86,7 @@ const RegisterForm = ({ setIsLoading }) => {
       <button
         className="text-white bg-slate-800 hover:bg-slate-700 rounded-lg p-2"
         type="submit"
+        disabled={isSubmitting}
       >
         Register
       </button>
