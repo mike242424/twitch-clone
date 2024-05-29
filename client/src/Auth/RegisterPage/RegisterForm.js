@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { validateUsername } from '../../validation/validateUsername';
+import { validatePassword } from '../../validation/validatePassword';
+import { validateEmail } from '../../validation/validateEmail';
+import Loading from '../../Components/Loading';
 
 const RegisterForm = () => {
   const [username, setUsername] = useState('');
@@ -12,6 +16,26 @@ const RegisterForm = () => {
     try {
       e.preventDefault();
       setError('');
+
+      if (!validateUsername(username)) {
+        setError(
+          'Username must be between 3 and 30 characters with no spaces.',
+        );
+        return;
+      }
+
+      if (!validateEmail(email)) {
+        setError('Please enter a valid email address.');
+        return;
+      }
+
+      if (!validatePassword(password)) {
+        setError(
+          'Password must be between 3 and 30 characters with no spaces.',
+        );
+        return;
+      }
+
       setIsLoading(true);
 
       const { data } = await axios.post(
@@ -26,13 +50,14 @@ const RegisterForm = () => {
       console.log(data);
     } catch (error) {
       console.log(error);
+      setError(error.response.data.error);
     } finally {
       setIsLoading(false);
     }
   }
 
   if (isLoading) {
-    return <div>...loading</div>;
+    return <Loading />;
   }
 
   return (
@@ -67,7 +92,7 @@ const RegisterForm = () => {
       >
         Register
       </button>
-      <p>{error}</p>
+      <p className="text-red-700 font-bold">{error}</p>
     </form>
   );
 };

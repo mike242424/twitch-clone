@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { validateUsername } from '../../validation/validateUsername';
+import { validatePassword } from '../../validation/validatePassword';
+import Loading from '../../Components/Loading';
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
@@ -10,7 +13,23 @@ const LoginForm = () => {
   async function handleSubmit(e) {
     try {
       e.preventDefault();
+
       setError('');
+
+      if (!validateUsername(username)) {
+        setError(
+          'Username must be between 3 and 30 characters with no spaces.',
+        );
+        return;
+      }
+
+      if (!validatePassword(password)) {
+        setError(
+          'Password must be between 3 and 30 characters with no spaces.',
+        );
+        return;
+      }
+
       setIsLoading(true);
 
       const { data } = await axios.post(
@@ -24,13 +43,14 @@ const LoginForm = () => {
       console.log(data);
     } catch (error) {
       console.log(error);
+      setError(error.response.data.error);
     } finally {
       setIsLoading(false);
     }
   }
 
   if (isLoading) {
-    return <div>...loading</div>;
+    return <Loading />;
   }
 
   return (
@@ -56,6 +76,7 @@ const LoginForm = () => {
       >
         Login
       </button>
+      <p className="text-red-700 font-bold">{error}</p>
     </form>
   );
 };

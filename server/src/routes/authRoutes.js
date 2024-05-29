@@ -1,12 +1,9 @@
 import express from 'express';
-import Joi from 'joi';
 import { createValidator } from 'express-joi-validation';
-
-import { postLogin } from '../controllers/controllers.js';
-import { postRegister } from '../controllers/controllers.js';
-
 import { registerSchema } from '../validation/registerSchema.js';
 import { loginSchema } from '../validation/loginSchema.js';
+import { postRegister } from '../controllers/authControllers/postRegister.js';
+import { postLogin } from '../controllers/authControllers/postLogin.js';
 
 const router = express.Router();
 
