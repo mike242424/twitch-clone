@@ -9,7 +9,7 @@ const LoginPage = () => {
         <span className="text-white">
           Don't have an account?{' '}
           <Link
-            className="text-slate-800 font-bold"
+            className="text-slate-800 hover:text-slate-700 font-bold"
             to="http://localhost:3000/register"
           >
             Register
