@@ -1,9 +1,5 @@
-function App() {
-  return (
-    <div>
-      <h1>Twitch Clone</h1>
-    </div>
-  );
-}
+const App = ({ children }) => {
+  return <>{children}</>;
+};
 
 export default App;
