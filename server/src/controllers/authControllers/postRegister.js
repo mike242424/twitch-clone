@@ -15,7 +15,7 @@ export const postRegister = async (req, res) => {
     }
 
     const duplicateEmail = await User.exists({
-      email,
+      email: email.toLowerCase(),
     });
 
     if (duplicateEmail) {
