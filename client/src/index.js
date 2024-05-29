@@ -1,13 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from 'react-router-dom';
 import App from './App';
-import AuthPage from './AuthPage/AuthPage';
 import DashboardPage from './DashboardPage/DashboardPage';
 import './index.css';
+import LoginPage from './Auth/LoginPage/LoginPage';
+import RegisterPage from './Auth/RegisterPage/RegisterPage';
 
 const routes = createBrowserRouter([
-  { path: '/auth', element: <AuthPage /> },
+  { path: '/', element: <Navigate to="/login" replace /> },
+  { path: '/login', element: <LoginPage /> },
+  { path: '/register', element: <RegisterPage /> },
   { path: '/dashboard', element: <DashboardPage /> },
 ]);
 
