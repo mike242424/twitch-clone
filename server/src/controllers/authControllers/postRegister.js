@@ -15,7 +15,7 @@ export const postRegister = async (req, res) => {
     }
 
     const duplicateEmail = await User.exists({
-      email: email.toLowerCase(),
+      email: email.toLowerCase,
     });
 
     if (duplicateEmail) {
@@ -31,7 +31,7 @@ export const postRegister = async (req, res) => {
     });
 
     const token = generateToken(
-      { userId: newUser._id, email },
+      { userId: newUser._id, email: newUser.email },
       process.env.JWT_SECRET_KEY,
       '8h',
     );
@@ -39,7 +39,7 @@ export const postRegister = async (req, res) => {
     return res.status(201).send({
       userDetails: {
         username,
-        email,
+        email: newUser.email,
         token,
       },
     });
