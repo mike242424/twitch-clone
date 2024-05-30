@@ -1,4 +1,5 @@
-import mongoose from 'mongoose';
+import { ref } from 'joi';
+import mongoose, { Schema } from 'mongoose';
 
 const userSchema = new mongoose.Schema({
   email: {
@@ -12,6 +13,11 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
   },
+  channel: {
+    type: Schema.Types.ObjectId,
+    ref: 'Channel',
+  },
+  followedChannels: { type: [{ type: Schema.Types.ObjectId, ref: 'Channel' }] },
 });
 
 export default mongoose.model('User', userSchema);
