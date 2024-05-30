@@ -11,13 +11,8 @@ const LoginForm = () => {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    if (!validateUsername(username)) {
-      setError('Username must be between 3 and 30 characters with no spaces.');
-      return;
-    }
-
-    if (!validatePassword(password)) {
-      setError('Password must be between 3 and 30 characters with no spaces.');
+    if (!validateUsername(username) || !validatePassword(password)) {
+      setError('Incorrect username or password.');
       return;
     }
 
