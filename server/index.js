@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 
 import authRoutes from './src/routes/authRoutes.js';
 import channelRoutes from './src/routes/channelRoutes.js';
+import settingsRoutes from './src/routes/settingsRoutes.js';
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.use(cors());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/channels', channelRoutes);
+app.use('/api/settings', settingsRoutes);
 
 const server = http.createServer(app);
 
