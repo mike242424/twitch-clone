@@ -11,13 +11,13 @@ export const postLogin = async (req, res) => {
     });
 
     if (!user) {
-      return res.status(400).send({ error: 'Incorrect username or password' });
+      return res.status(400).send({ error: 'Incorrect username or password.' });
     }
 
     const comparedPassword = await bcrypt.compare(password, user.password);
 
     if (!comparedPassword) {
-      return res.status(400).send({ error: 'Incorrect username or password' });
+      return res.status(400).send({ error: 'Incorrect username or password.' });
     }
 
     const token = generateToken(
