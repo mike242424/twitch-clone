@@ -1,60 +1,17 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { validateUsername } from '../../validation/validateUsername';
-import { validatePassword } from '../../validation/validatePassword';
-import { validateEmail } from '../../validation/validateEmail';
+import { useRegister } from '../../hooks/useRegister';
 
 const RegisterForm = ({ setIsLoading }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState('');
+  const { register, isLoading, error } = useRegister();
 
   async function handleSubmit(e) {
-    try {
-      e.preventDefault();
-      setIsSubmitting(true);
-      setError('');
+    e.preventDefault();
 
-      if (!validateUsername(username)) {
-        setError(
-          'Username must be between 3 and 30 characters with no spaces.',
-        );
-        return;
-      }
-
-      if (!validateEmail(email)) {
-        setError('Please enter a valid email address.');
-        return;
-      }
-
-      if (!validatePassword(password)) {
-        setError(
-          'Password must be between 3 and 30 characters with no spaces.',
-        );
-        return;
-      }
-
-      setIsLoading(true);
-
-      const { data } = await axios.post(
-        'http://localhost:3002/api/auth/register',
-        {
-          username,
-          email,
-          password,
-        },
-      );
-
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-      setError(error.response.data.error);
-    } finally {
-      setIsLoading(false);
-      setIsSubmitting(false);
-    }
+    register(username, email, password);
   }
 
   return (
@@ -86,7 +43,7 @@ const RegisterForm = ({ setIsLoading }) => {
       <button
         className="text-white bg-slate-800 hover:bg-slate-700 rounded-lg p-2"
         type="submit"
-        disabled={isSubmitting}
+        disabled={isLoading}
       >
         Register
       </button>
