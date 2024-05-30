@@ -1,15 +1,33 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useRegister } from '../../hooks/useRegister';
+import { validateUsername } from '../../validation/validateUsername';
+import { validateEmail } from '../../validation/validateEmail';
+import { validatePassword } from '../../validation/validatePassword';
 
 const RegisterForm = ({ setIsLoading }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { register, isLoading, error } = useRegister();
+  const { register, setError, isLoading, error } = useRegister();
 
   async function handleSubmit(e) {
     e.preventDefault();
+
+    if (!validateUsername(username)) {
+      setError('Username must be between 3 and 30 characters with no spaces.');
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      setError('Please enter a valid email address.');
+      return;
+    }
+
+    if (!validatePassword(password)) {
+      setError('Password must be between 3 and 30 characters with no spaces.');
+      return;
+    }
 
     register(username, email, password);
   }

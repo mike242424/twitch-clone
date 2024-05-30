@@ -1,13 +1,25 @@
 import { useState } from 'react';
 import { useLogin } from '../../hooks/useLogin';
+import { validateUsername } from '../../validation/validateUsername';
+import { validatePassword } from '../../validation/validatePassword';
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { login, isLoading, error } = useLogin();
+  const { login, setError, isLoading, error } = useLogin();
 
   async function handleSubmit(e) {
     e.preventDefault();
+
+    if (!validateUsername(username)) {
+      setError('Username must be between 3 and 30 characters with no spaces.');
+      return;
+    }
+
+    if (!validatePassword(password)) {
+      setError('Password must be between 3 and 30 characters with no spaces.');
+      return;
+    }
 
     login(username, password);
   }
