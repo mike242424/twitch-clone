@@ -6,7 +6,7 @@ const channelSchema = new mongoose.Schema({
   title: { type: String, default: 'New Channel' },
   description: { type: String, default: 'This is a new channel description' },
   avatarUrl: { type: String, default: 'none' },
-  streamKey: { type: String, default: uuid() },
+  streamKey: { type: String, default: () => uuid() },
   messages: {
     type: [{ type: Schema.Types.ObjectId, ref: 'Message' }],
     default: [],
