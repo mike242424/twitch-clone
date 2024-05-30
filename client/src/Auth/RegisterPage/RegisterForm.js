@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import axios from 'axios';
 import { useRegister } from '../../hooks/useRegister';
 import { validateUsername } from '../../validation/validateUsername';
 import { validateEmail } from '../../validation/validateEmail';
 import { validatePassword } from '../../validation/validatePassword';
 
-const RegisterForm = ({ setIsLoading }) => {
+const RegisterForm = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const { register, setError, isLoading, error } = useRegister();
 
   async function handleSubmit(e) {
@@ -26,6 +26,11 @@ const RegisterForm = ({ setIsLoading }) => {
 
     if (!validatePassword(password)) {
       setError('Password must be between 3 and 30 characters with no spaces.');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError('Passwords do not match.');
       return;
     }
 
@@ -57,6 +62,13 @@ const RegisterForm = ({ setIsLoading }) => {
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+      />
+      <input
+        className="border rounded-lg p-2"
+        type="password"
+        placeholder="Confirm Password"
+        value={confirmPassword}
+        onChange={(e) => setConfirmPassword(e.target.value)}
       />
       <button
         className="text-white bg-slate-800 hover:bg-slate-700 rounded-lg p-2"

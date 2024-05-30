@@ -34,5 +34,5 @@ export function useRegister() {
     }
   }
 
-  return { register, isLoading, error };
+  return { register, setError, isLoading, error };
 }
