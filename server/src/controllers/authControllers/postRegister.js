@@ -1,4 +1,5 @@
 import User from '../../models/User.js';
+import Channel from '../../models/Channel.js';
 import bcrypt from 'bcryptjs';
 import generateToken from '../../utils/generateJwtToken.js';
 
@@ -24,10 +25,13 @@ export const postRegister = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    const newChannel = await Channel.create({});
+
     const newUser = await User.create({
       username,
       email: email.toLowerCase(),
       password: hashedPassword,
+      channel: newChannel._id,
     });
 
     const token = generateToken(
