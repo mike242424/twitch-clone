@@ -9,7 +9,7 @@ export const updatePassword = async (req, res) => {
     const user = await User.findById(userId, { password: 1 });
 
     if (!user) {
-      return res.status(404).send({ error: 'User does not exist.' });
+      return res.status(404).send({ error: 'User not found.' });
     }
 
     const comparedPassword = await bcrypt.compare(password, user.password);
