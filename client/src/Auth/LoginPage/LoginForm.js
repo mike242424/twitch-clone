@@ -20,8 +20,8 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4 mb-20">
-      <h1 className="text-center font-bold text-3xl text-white mb-10">Login</h1>
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4 mb-10">
+      <h1 className="text-center font-bold text-3xl text-white">Login</h1>
       <input
         className="border rounded-lg p-2"
         type="text"

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import RegisterForm from './RegisterForm';
 import Loading from '../../components/Loading';
 import { useRegister } from '../../hooks/useRegister';
+import Navbar from '../Navbar';
 
 const RegisterPage = () => {
   const { isLoading } = useRegister();
@@ -11,8 +12,9 @@ const RegisterPage = () => {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center w-full mt-20">
-      <div className="bg-slate-500 border-2 border-slate-600 w-10/12 sm:w-6/12 p-10 px-20 text-center">
+    <div className="flex flex-col justify-center items-center w-full">
+      <Navbar />
+      <div className="bg-slate-500 border-2 border-slate-600 w-10/12 sm:w-6/12 p-10 px-20 mt-10 text-center">
         <RegisterForm />
         <span className="text-white">
           Already have an account?{' '}
