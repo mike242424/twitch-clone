@@ -1,28 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {
-  createBrowserRouter,
-  Navigate,
-  RouterProvider,
-} from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import App from './App';
 import DashboardPage from './DashboardPage/DashboardPage';
 import './index.css';
 import LoginPage from './Auth/LoginPage/LoginPage';
 import RegisterPage from './Auth/RegisterPage/RegisterPage';
 
-const routes = createBrowserRouter([
-  { path: '/', element: <Navigate to="/login" replace /> },
-  { path: '/login', element: <LoginPage /> },
-  { path: '/register', element: <RegisterPage /> },
-  { path: '/dashboard', element: <DashboardPage /> },
-]);
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <BrowserRouter>
     <App>
-      <RouterProvider router={routes} />
+      <Routes>
+        <Route path={'/'} element={<Navigate to="/dashboard" replace />} />
+        <Route path={'/login'} element={<LoginPage />} />
+        <Route path={'/register'} element={<RegisterPage />} />
+        <Route path={'/dashboard'} element={<DashboardPage />} />
+      </Routes>
     </App>
-  </React.StrictMode>,
+  </BrowserRouter>,
 );
