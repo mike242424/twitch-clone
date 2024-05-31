@@ -5,6 +5,7 @@ import { getChannelById } from '../controllers/channelControllers/getChannelById
 import { getChannels } from '../controllers/channelControllers/getChannels.js';
 import { verifyToken } from '../middleware/authMiddleware.js';
 import { followChannel } from '../controllers/channelControllers/followChannel.js';
+import { unfollowChannel } from '../controllers/channelControllers/unfollowChannel.js';
 
 const router = express.Router();
 
@@ -23,6 +24,13 @@ router.post(
   verifyToken,
   validator.body(channelDetailsSchema),
   followChannel,
+);
+
+router.delete(
+  '/follow',
+  verifyToken,
+  validator.body(channelDetailsSchema),
+  unfollowChannel,
 );
 
 export default router;
