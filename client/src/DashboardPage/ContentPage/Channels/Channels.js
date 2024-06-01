@@ -11,7 +11,6 @@ const Channels = () => {
         const response = await axios.get('http://localhost:3002/api/channels/');
 
         setChannels(response.data.channels);
-        console.log(response.data.channels);
       } catch (err) {
         console.log(err);
       }
