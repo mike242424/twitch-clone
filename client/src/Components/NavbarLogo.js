@@ -1,7 +1,12 @@
 import { Twitch } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const NavbarLogo = () => {
-  return <Twitch className="text-white" />;
+  return (
+    <Link to={'/'}>
+      <Twitch className="text-white" />
+    </Link>
+  );
 };
 
 export default NavbarLogo;
