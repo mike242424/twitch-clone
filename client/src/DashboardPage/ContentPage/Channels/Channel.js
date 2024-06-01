@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import ChannelView from './ChannelView';
+import ChannelBody from './ChannelBody';
+import ChannelChat from './ChannelChat';
 
 const Channel = () => {
   const [channel, setChannel] = useState();
@@ -24,8 +25,9 @@ const Channel = () => {
   }, [id]);
 
   return (
-    <div>
-      <ChannelView channel={channel} />
+    <div className="flex w-full">
+      <ChannelBody channel={channel} />
+      <ChannelChat />
     </div>
   );
 };

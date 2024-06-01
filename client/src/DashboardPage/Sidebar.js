@@ -37,7 +37,7 @@ const Sidebar = () => {
   return (
     <div className="bg-slate-300 text-slate-800 w-14 lg:w-64 p-2 lg:p-6">
       <span className="hidden lg:block font-bold">FOLLOWED CHANNELS</span>
-      <ul className="mt-4">
+      <ul className="mt-4 hidden lg:block ">
         {followedChannels?.map((channel) => (
           <li className="flex flex-col my-4" key={channel._id}>
             <span className="font-bold">{channel.title}</span>

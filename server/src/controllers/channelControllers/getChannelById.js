@@ -28,6 +28,7 @@ export const getChannelById = async (req, res) => {
         username: user.username,
         title: channel.title,
         description: channel.description,
+        avatarUrl: channel.avatarUrl,
         isOnline,
         streamUrl,
       },
