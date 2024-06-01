@@ -32,7 +32,7 @@ const Sidebar = () => {
     }
 
     getFollowedChannels();
-  });
+  }, []);
 
   return (
     <div className="bg-slate-300 text-slate-800 w-14 lg:w-64 p-2 lg:p-6">

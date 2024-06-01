@@ -5,7 +5,7 @@ import Settings from './Settings';
 
 const Content = () => {
   return (
-    <div className="flex flex-1 justify-center p-4">
+    <div className="flex flex-1 p-4">
       <Routes>
         <Route path={'/settings'} element={<Settings />} />
         <Route path={'/channels'} element={<Channels />} />
