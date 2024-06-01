@@ -1,4 +1,4 @@
-import Content from './Content';
+import Content from './ContentPage/Content';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 
