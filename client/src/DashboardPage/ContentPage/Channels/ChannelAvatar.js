@@ -1,16 +1,18 @@
-const ChannelAvatar = ({ avatarUrl }) => {
+import { Link } from 'react-router-dom';
+
+const ChannelAvatar = ({ channel }) => {
   return (
-    <div>
-      {avatarUrl === 'none' ? (
+    <Link to={`/channel/${channel?._id}`}>
+      {channel?.avatarUrl === 'none' ? (
         <div className="bg-slate-500 w-16 h-16 rounded-full"></div>
       ) : (
         <img
-          src={avatarUrl}
+          src={channel?.avatarUrl}
           alt="user Avatar"
           className="w-16 h-16 rounded-full"
         />
       )}
-    </div>
+    </Link>
   );
 };
 

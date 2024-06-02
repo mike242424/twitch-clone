@@ -7,7 +7,7 @@ const ChannelBody = ({ channel }) => {
         <span className="font-bold">Channel is offline</span>
       </div>
       <div className="flex justify-start items-center gap-4 p-4">
-        <ChannelAvatar avatarUrl={channel?.avatarUrl} />
+        <ChannelAvatar channel={channel} />
         <div className="flex flex-col mt-4">
           <span className="font-bold text-lg">{channel?.title}</span>
           <span className="font-bold text-sm">{channel?.username}</span>

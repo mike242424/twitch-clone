@@ -47,7 +47,7 @@ const Sidebar = () => {
         {followedChannels?.map((channel) => (
           <div key={channel._id}>
             <div className="xl:hidden">
-              <ChannelAvatar avatarUrl={channel.avatarUrl} />
+              <ChannelAvatar channel={channel} />
             </div>
             <div className="hidden xl:block">
               <ChannelCard channel={channel} />

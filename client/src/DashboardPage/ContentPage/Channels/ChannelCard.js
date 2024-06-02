@@ -9,7 +9,7 @@ const ChannelCard = ({ channel }) => {
       key={channel._id}
     >
       <div className="flex justify-center items-center gap-4">
-        <ChannelAvatar avatarUrl={channel?.avatarUrl} />
+        <ChannelAvatar channel={channel} />
         <div className="flex flex-col">
           <span className="font-bold text-lg">{channel?.title}</span>
           <span className="font-bold text-sm">{channel?.username}</span>

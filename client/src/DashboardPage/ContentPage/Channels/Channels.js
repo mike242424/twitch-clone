@@ -19,11 +19,16 @@ const Channels = () => {
     getChannels();
   }, []);
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-6 justify-around gap-4 w-full">
-      {channels?.map((channel) => (
-        <ChannelCard key={channel._id} channel={channel} />
-      ))}
-    </div>
+    <>
+      <h1 className="text-center font-bold text-3xl text-slate-800 my-8">
+        All Channels
+      </h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-4 justify-around gap-4 w-full">
+        {channels?.map((channel) => (
+          <ChannelCard key={channel._id} channel={channel} />
+        ))}
+      </div>
+    </>
   );
 };
 
