@@ -2,7 +2,7 @@ const ChannelAvatar = ({ avatarUrl }) => {
   return (
     <div>
       {avatarUrl === 'none' ? (
-        <div className="bg-slate-300 w-16 h-16 rounded-full"></div>
+        <div className="bg-slate-500 w-16 h-16 rounded-full"></div>
       ) : (
         <img
           src={avatarUrl}

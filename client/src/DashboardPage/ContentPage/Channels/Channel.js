@@ -25,7 +25,7 @@ const Channel = () => {
   }, [id]);
 
   return (
-    <div className="flex w-full">
+    <div className="flex lg:flex-row flex-col w-full">
       <ChannelBody channel={channel} />
       <ChannelChat />
     </div>

@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import ChannelAvatar from './ContentPage/Channels/ChannelAvatar';
+import ChannelCard from './ContentPage/Channels/ChannelCard';
 
 const Sidebar = () => {
   const [followedChannels, setFollowedChannels] = useState([]);
@@ -35,16 +37,20 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <div className="bg-slate-300 text-slate-800 w-14 lg:w-64 p-2 lg:p-6">
-      <span className="hidden lg:block font-bold">FOLLOWED CHANNELS</span>
-      <ul className="mt-4 hidden lg:block ">
+    <div className="bg-slate-300 text-slate-800 hidden md:block sm:w-18 xl:w-64 p-2 xl:p-6">
+      <span className="hidden xl:block font-bold">FOLLOWED CHANNELS</span>
+      <div className="mt-6">
         {followedChannels?.map((channel) => (
-          <li className="flex flex-col my-4" key={channel._id}>
-            <span className="font-bold">{channel.title}</span>
-            <span className="text-xs text-red-700 font-bold">Offline</span>
-          </li>
+          <div key={channel._id}>
+            <div className="xl:hidden">
+              <ChannelAvatar avatarUrl={channel.avatarUrl} />
+            </div>
+            <div className="hidden xl:block">
+              <ChannelCard channel={channel} />
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
