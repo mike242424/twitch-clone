@@ -1,7 +1,6 @@
 import ChannelAvatar from './ChannelAvatar';
 
 const ChannelBody = ({ channel }) => {
-  console.log(channel);
   return (
     <div className="flex flex-1 flex-col">
       <div className="flex justify-center items-center w-full bg-slate-200 h-[400px]">

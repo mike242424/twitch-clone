@@ -19,9 +19,9 @@ const Channels = () => {
     getChannels();
   }, []);
   return (
-    <div className="flex justify-around gap-4 w-full">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-6 justify-around gap-4 w-full">
       {channels?.map((channel) => (
-        <ChannelCard key={channel.id} channel={channel} />
+        <ChannelCard key={channel._id} channel={channel} />
       ))}
     </div>
   );

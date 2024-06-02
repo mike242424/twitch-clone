@@ -10,7 +10,7 @@ export const getChannels = async (req, res) => {
       // .filter((user) => user.channel.isActive) // todo
       .map((user) => {
         return {
-          id: user.channel._id,
+          _id: user.channel._id,
           title: user.channel.title,
           avatarUrl: user.channel.avatarUrl,
           username: user.username,

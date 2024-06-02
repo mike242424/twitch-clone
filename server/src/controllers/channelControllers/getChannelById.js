@@ -24,7 +24,7 @@ export const getChannelById = async (req, res) => {
 
     return res.send({
       channelDetails: {
-        id: channel._id,
+        _id: channel._id,
         username: user.username,
         title: channel.title,
         description: channel.description,
