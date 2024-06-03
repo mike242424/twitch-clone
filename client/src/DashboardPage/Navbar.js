@@ -23,7 +23,7 @@ const Navbar = () => {
     <div className="flex justify-between items-center bg-slate-800 w-full p-5 px-6">
       <div className="flex items-center gap-4">
         <NavbarLogo />
-        <NavLink to={'/channels'} className="font-bold text-white">
+        <NavLink to={'/'} className="font-bold text-white">
           Browse
         </NavLink>
       </div>

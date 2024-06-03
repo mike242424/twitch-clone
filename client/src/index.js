@@ -6,6 +6,7 @@ import DashboardPage from './DashboardPage/DashboardPage';
 import './index.css';
 import LoginPage from './Auth/LoginPage/LoginPage';
 import RegisterPage from './Auth/RegisterPage/RegisterPage';
+import NotFound from './components/NotFound';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,7 +15,8 @@ root.render(
       <Routes>
         <Route path={'/login'} element={<LoginPage />} />
         <Route path={'/register'} element={<RegisterPage />} />
-        <Route path={'/*'} element={<DashboardPage />} />
+        <Route path={'/'} element={<DashboardPage />} />
+        <Route path={'/*'} element={<NotFound />} />
       </Routes>
     </App>
   </BrowserRouter>,

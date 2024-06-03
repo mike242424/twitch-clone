@@ -7,8 +7,8 @@ const Content = () => {
   return (
     <div className="flex flex-1 flex-col">
       <Routes>
+        <Route path={'/'} element={<Channels />} />
         <Route path={'/settings'} element={<Settings />} />
-        <Route path={'/channels'} element={<Channels />} />
         <Route path={'/channel/:id'} element={<Channel />} />
       </Routes>
     </div>
