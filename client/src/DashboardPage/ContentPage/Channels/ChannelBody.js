@@ -5,7 +5,6 @@ const ChannelBody = ({ channel }) => {
   const { followedChannels, toggleFollow } = useFollow();
   const followedChannelIds = followedChannels.map((channel) => channel?._id);
   const isFollowing = followedChannelIds.includes(channel?._id);
-  console.log(isFollowing);
   const userJson = localStorage.getItem('user');
   const user = userJson ? JSON.parse(userJson) : null;
   const username = user ? user.username : '';
@@ -25,7 +24,7 @@ const ChannelBody = ({ channel }) => {
               <button
                 className={`${
                   isFollowing ? 'bg-slate-400' : 'bg-slate-800'
-                } p-4 rounded-lg text-white font-bold`}
+                } p-3 rounded-lg text-white font-bold`}
                 onClick={() => toggleFollow(channel?._id)}
               >
                 {isFollowing ? 'Unfollow' : 'Follow'}
