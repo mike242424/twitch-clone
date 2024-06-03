@@ -75,28 +75,44 @@ const Settings = () => {
         onSubmit={handleSubmit}
         className="flex flex-col gap-4 mb-4 w-4/6 md:w-3/6"
       >
+        <label htmlFor="username" className="font-bold text-slate-800">
+          Username:{' '}
+        </label>
         <input
+          id="username"
           className="border rounded-lg p-2"
           type="text"
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
+        <label htmlFor="title" className="font-bold text-slate-800">
+          Title:{' '}
+        </label>
         <input
+          id="title"
           className="border rounded-lg p-2"
           type="text"
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
+        <label htmlFor="description" className="font-bold text-slate-800" l>
+          Description:
+        </label>
         <textarea
+          id="description"
           className="border rounded-lg p-2"
           rows={5}
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
+        <label htmlFor="avatarUrl" className="font-bold text-slate-800">
+          Avatar URL:
+        </label>
         <input
+          id="avatarUrl"
           className="border rounded-lg p-2"
           type="text"
           placeholder="Avatar URL"
