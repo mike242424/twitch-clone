@@ -22,8 +22,6 @@ export function useRegister() {
         },
       );
 
-      setIsLoading(false);
-
       const { userDetails } = response.data;
 
       localStorage.setItem('user', JSON.stringify(userDetails));
@@ -31,6 +29,8 @@ export function useRegister() {
       navigate('/dashboard');
     } catch (error) {
       setError();
+    } finally {
+      setIsLoading(false);
     }
   }
 

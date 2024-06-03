@@ -45,9 +45,9 @@ const ChangePasswordForm = () => {
   }
   return (
     <div className="flex flex-col justify-center items-center w-full mb-10">
-      <h1 className="text-center font-bold text-3xl text-slate-800 my-8">
+      <h3 className="text-center font-bold text-2xl text-slate-800 my-8">
         Reset Password
-      </h1>
+      </h3>
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-4 mb-4 w-4/6 md:w-3/6"
@@ -78,7 +78,7 @@ const ChangePasswordForm = () => {
           type="submit"
           className="text-white bg-slate-800 hover:bg-slate-700 rounded-lg p-2 border-slate-800 hover:border-slate-700 border-2 mt-10"
         >
-          Submit
+          Update Password
         </button>
         <p className="text-red-700 font-bold">{error}</p>
       </form>

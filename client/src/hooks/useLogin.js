@@ -21,8 +21,6 @@ export function useLogin() {
         },
       );
 
-      setIsLoading(false);
-
       const { userDetails } = response.data;
 
       localStorage.setItem('user', JSON.stringify(userDetails));
@@ -30,6 +28,8 @@ export function useLogin() {
       navigate('/dashboard');
     } catch (err) {
       setError(err.response.data.error);
+    } finally {
+      setIsLoading(false);
     }
   };
 

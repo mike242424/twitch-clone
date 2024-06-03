@@ -98,63 +98,70 @@ const Settings = () => {
       <h1 className="text-center font-bold text-3xl text-slate-800 my-8">
         Account Settings
       </h1>
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col gap-4 mb-4 w-4/6 md:w-3/6"
-      >
-        <label htmlFor="username" className="font-bold text-slate-800">
-          Username:
-        </label>
-        <input
-          id="username"
-          className="border rounded-lg p-2"
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <label htmlFor="title" className="font-bold text-slate-800">
-          Title:
-        </label>
-        <input
-          id="title"
-          className="border rounded-lg p-2"
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <label htmlFor="description" className="font-bold text-slate-800">
-          Description:
-        </label>
-        <textarea
-          id="description"
-          className="border rounded-lg p-2"
-          rows={5}
-          placeholder="Description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <label htmlFor="avatarUrl" className="font-bold text-slate-800">
-          Avatar URL:
-        </label>
-        <input
-          id="avatarUrl"
-          className="border rounded-lg p-2"
-          type="text"
-          placeholder="Avatar URL"
-          value={avatarUrl}
-          onChange={(e) => setAvatarUrl(e.target.value)}
-        />
-        <button
-          type="submit"
-          className="text-white bg-slate-800 hover:bg-slate-700 rounded-lg p-2 border-slate-800 hover:border-slate-700 border-2 mt-10"
+      <div className="flex flex-col items-center bg-slate-400 p-6 rounded-lg shadow-md mb-6 w-11/12 md:w-10/12 lg:w-9/12">
+        <h3 className="text-center font-bold text-2xl text-slate-800 my-8">
+          Update Channel Settings
+        </h3>
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-4 mb-4 w-4/6 md:w-3/6"
         >
-          Submit
-        </button>
-        <p className="text-red-700 font-bold">{error}</p>
-      </form>
-      <ChangePasswordForm />
+          <label htmlFor="username" className="font-bold text-slate-800">
+            Username:
+          </label>
+          <input
+            id="username"
+            className="border rounded-lg p-2"
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <label htmlFor="title" className="font-bold text-slate-800">
+            Title:
+          </label>
+          <input
+            id="title"
+            className="border rounded-lg p-2"
+            type="text"
+            placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <label htmlFor="description" className="font-bold text-slate-800">
+            Description:
+          </label>
+          <textarea
+            id="description"
+            className="border rounded-lg p-2"
+            rows={5}
+            placeholder="Description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+          <label htmlFor="avatarUrl" className="font-bold text-slate-800">
+            Avatar URL:
+          </label>
+          <input
+            id="avatarUrl"
+            className="border rounded-lg p-2"
+            type="text"
+            placeholder="Avatar URL"
+            value={avatarUrl}
+            onChange={(e) => setAvatarUrl(e.target.value)}
+          />
+          <button
+            type="submit"
+            className="text-white bg-slate-800 hover:bg-slate-700 rounded-lg p-2 border-slate-800 hover:border-slate-700 border-2 mt-10"
+          >
+            Submit
+          </button>
+          <p className="text-red-700 font-bold">{error}</p>
+        </form>
+      </div>
+      <div className="bg-slate-400 p-6 rounded-lg shadow-md mb-6 w-11/12 md:w-10/12 lg:w-9/12">
+        <ChangePasswordForm />
+      </div>
       <StreamKey streamKey={streamKey} />
     </div>
   );
