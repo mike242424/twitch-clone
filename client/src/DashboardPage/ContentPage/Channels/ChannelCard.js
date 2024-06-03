@@ -4,9 +4,9 @@ import ChannelAvatar from './ChannelAvatar';
 const ChannelCard = ({ channel }) => {
   return (
     <Link
-      to={`/channel/${channel._id}`}
+      to={`/channel/${channel?._id}`}
       className="h-fit mt-4"
-      key={channel._id}
+      key={channel?._id}
     >
       <div className="flex justify-center items-center gap-4">
         <ChannelAvatar channel={channel} />
