@@ -2,6 +2,10 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import StreamKey from './StreamKey';
+import { validateUsername } from '../../../validation/validateUsername';
+import { validateTitle } from '../../../validation/validateTitle';
+import { validateDescription } from '../../../validation/validateDescription';
+import { validateUrl } from '../../../validation/validateUrl';
 
 const Settings = () => {
   useEffect(() => {
@@ -45,6 +49,28 @@ const Settings = () => {
     e.preventDefault();
 
     setError('');
+
+    if (!validateUsername(username)) {
+      setError(
+        'Invalid username. Must be between 3 and 30 characters with no spaces allowed.',
+      );
+      return;
+    }
+
+    if (!validateTitle(title)) {
+      setError('Invalid title. Must be between 3 and 30 characters.');
+      return;
+    }
+
+    if (!validateDescription(description)) {
+      setError('Invalid description. Must be between 10 and 200 characters.');
+      return;
+    }
+
+    if (!validateUrl(avatarUrl)) {
+      setError('Invalid Avatar Url.');
+      return;
+    }
 
     try {
       const userJson = localStorage.getItem('user');
