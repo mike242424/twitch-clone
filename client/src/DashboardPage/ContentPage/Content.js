@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Channels from './Channels/Channels';
-import Settings from './Settings';
 import Channel from './Channels/Channel';
+import Settings from './Settings/Settings';
 
 const Content = () => {
   return (
