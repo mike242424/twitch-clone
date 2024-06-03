@@ -4,12 +4,15 @@ import axios from 'axios';
 
 const ChannelBody = ({ channel }) => {
   const [isFollowing, setIsFollowing] = useState(false);
+  const [username, setUsername] = useState('');
 
   useEffect(() => {
     async function getIsFollowing() {
       const userJson = localStorage.getItem('user');
       const user = userJson ? JSON.parse(userJson) : null;
       const token = user ? user.token : null;
+      const jwtUsername = user ? user.username : null;
+      setUsername(jwtUsername);
 
       if (!token) {
         console.log('No token found');
@@ -30,6 +33,7 @@ const ChannelBody = ({ channel }) => {
           (channel) => channel._id,
         );
         const isCurrentlyFollowing = followedChannelIds.includes(channel?._id);
+
         setIsFollowing(isCurrentlyFollowing);
       } catch (err) {
         console.log(err);
@@ -69,6 +73,8 @@ const ChannelBody = ({ channel }) => {
     }
   }
 
+  console.log(channel);
+
   return (
     <div className="flex flex-1 flex-col">
       <div className="flex justify-center items-center w-full bg-slate-200 h-[400px]">
@@ -79,16 +85,18 @@ const ChannelBody = ({ channel }) => {
           <div className="flex justify-start items-center gap-4 p-4">
             <ChannelCard channel={channel} />
           </div>
-          <div className="p-4">
-            <button
-              className={`${
-                isFollowing ? 'bg-slate-400' : 'bg-slate-800'
-              } p-4 rounded-lg text-white font-bold`}
-              onClick={handleToggleFollow}
-            >
-              {isFollowing ? 'Unfollow' : 'Follow'}
-            </button>
-          </div>
+          {username !== channel?.username && (
+            <div className="p-4">
+              <button
+                className={`${
+                  isFollowing ? 'bg-slate-400' : 'bg-slate-800'
+                } p-4 rounded-lg text-white font-bold`}
+                onClick={handleToggleFollow}
+              >
+                {isFollowing ? 'Unfollow' : 'Follow'}
+              </button>
+            </div>
+          )}
         </div>
 
         <div className="flex flex-col my-4 p-4">
