@@ -26,7 +26,7 @@ export function useRegister() {
 
       localStorage.setItem('user', JSON.stringify(userDetails));
 
-      navigate('/dashboard');
+      navigate('/');
     } catch (error) {
       setError();
     } finally {

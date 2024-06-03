@@ -25,7 +25,7 @@ export function useLogin() {
 
       localStorage.setItem('user', JSON.stringify(userDetails));
 
-      navigate('/dashboard');
+      navigate('/');
     } catch (err) {
       setError(err.response.data.error);
     } finally {

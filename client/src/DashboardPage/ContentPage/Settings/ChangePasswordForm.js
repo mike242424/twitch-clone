@@ -37,7 +37,7 @@ const ChangePasswordForm = () => {
         },
       );
 
-      navigate('/dashboard');
+      navigate('/');
     } catch (err) {
       console.log(err);
       setError('Incorrect Password.');

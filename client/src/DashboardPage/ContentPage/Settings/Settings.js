@@ -86,7 +86,7 @@ const Settings = () => {
         },
       );
 
-      navigate('/dashboard');
+      navigate('/');
     } catch (err) {
       console.log(err);
       setError('Error updating settings');
