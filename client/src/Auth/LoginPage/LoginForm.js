@@ -22,14 +22,22 @@ const LoginForm = () => {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4 mb-10">
       <h1 className="text-center font-bold text-3xl text-white">Login</h1>
+      <label htmlFor="username" className="font-bold text-slate-800 text-start">
+        Username:
+      </label>
       <input
+        id="username"
         className="border rounded-lg p-2"
         type="text"
         placeholder="Username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
       />
+      <label htmlFor="password" className="font-bold text-slate-800 text-start">
+        Password:
+      </label>
       <input
+        id="password"
         className="border rounded-lg p-2"
         type="password"
         placeholder="Password"
