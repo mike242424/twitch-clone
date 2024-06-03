@@ -1,9 +1,40 @@
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import ChannelAvatar from './ContentPage/Channels/ChannelAvatar';
 import ChannelCard from './ContentPage/Channels/ChannelCard';
-import { useFollow } from '../context/FollowContext';
 
 const Sidebar = () => {
-  const { followedChannels } = useFollow();
+  const [followedChannels, setFollowedChannels] = useState([]);
+
+  useEffect(() => {
+    async function getFollowedChannels() {
+      try {
+        const userJson = localStorage.getItem('user');
+        const user = userJson ? JSON.parse(userJson) : null;
+        const token = user ? user.token : null;
+
+        if (!token) {
+          console.log('Access Denied. No token found.');
+          return;
+        }
+
+        const response = await axios.get(
+          'http://localhost:3002/api/channels/followed',
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        );
+
+        setFollowedChannels(response.data.followedChannels);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    getFollowedChannels();
+  }, []);
 
   return (
     <div
