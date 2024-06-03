@@ -8,7 +8,7 @@ const ChannelCard = ({ channel }) => {
       className="h-fit mt-4"
       key={channel?._id}
     >
-      <div className="flex justify-center items-center gap-4">
+      <div className="flex justify-start items-center gap-4">
         <ChannelAvatar channel={channel} />
         <div className="flex flex-col">
           <span className="font-bold text-lg">{channel?.title}</span>

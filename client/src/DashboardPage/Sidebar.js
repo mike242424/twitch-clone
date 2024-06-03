@@ -43,9 +43,9 @@ const Sidebar = () => {
       } `}
     >
       <span className="hidden xl:block font-bold">FOLLOWED CHANNELS</span>
-      <div className="mt-6">
+      <div className="flex flex-col items-start mt-6">
         {followedChannels?.map((channel) => (
-          <div key={channel._id} className="my-4">
+          <div key={channel._id} className="my-2">
             <div className="xl:hidden">
               <ChannelAvatar channel={channel} />
             </div>

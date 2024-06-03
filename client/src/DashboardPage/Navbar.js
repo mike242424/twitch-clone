@@ -1,9 +1,10 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import NavbarLogo from '../components/NavbarLogo';
 import { useEffect, useState } from 'react';
 
 const Navbar = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const user = localStorage.getItem('user');
@@ -15,6 +16,7 @@ const Navbar = () => {
     localStorage.removeItem('user');
     setIsAuthenticated(false);
     window.location.reload();
+    navigate('/');
   }
 
   return (
