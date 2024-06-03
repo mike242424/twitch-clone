@@ -6,6 +6,7 @@ import { validateUsername } from '../../../validation/validateUsername';
 import { validateTitle } from '../../../validation/validateTitle';
 import { validateDescription } from '../../../validation/validateDescription';
 import { validateUrl } from '../../../validation/validateUrl';
+import ChangePasswordForm from './ChangePasswordForm';
 
 const Settings = () => {
   useEffect(() => {
@@ -102,7 +103,7 @@ const Settings = () => {
         className="flex flex-col gap-4 mb-4 w-4/6 md:w-3/6"
       >
         <label htmlFor="username" className="font-bold text-slate-800">
-          Username:{' '}
+          Username:
         </label>
         <input
           id="username"
@@ -113,7 +114,7 @@ const Settings = () => {
           onChange={(e) => setUsername(e.target.value)}
         />
         <label htmlFor="title" className="font-bold text-slate-800">
-          Title:{' '}
+          Title:
         </label>
         <input
           id="title"
@@ -123,7 +124,7 @@ const Settings = () => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <label htmlFor="description" className="font-bold text-slate-800" l>
+        <label htmlFor="description" className="font-bold text-slate-800">
           Description:
         </label>
         <textarea
@@ -153,6 +154,7 @@ const Settings = () => {
         </button>
         <p className="text-red-700 font-bold">{error}</p>
       </form>
+      <ChangePasswordForm />
       <StreamKey streamKey={streamKey} />
     </div>
   );
