@@ -34,6 +34,9 @@ export const postRegister = async (req, res) => {
       channel: newChannel._id,
     });
 
+    newChannel.userId = newUser._id;
+    await newChannel.save();
+
     const token = generateToken(
       { userId: newUser._id, email: newUser.email },
       process.env.JWT_SECRET_KEY,
