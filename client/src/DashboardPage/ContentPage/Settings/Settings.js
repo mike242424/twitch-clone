@@ -121,7 +121,7 @@ const Settings = () => {
         />
         <button
           type="submit"
-          className="text-white bg-slate-800 hover:bg-slate-700 rounded-lg p-2"
+          className="text-white bg-slate-800 hover:bg-slate-700 rounded-lg p-2 border-slate-800 hover:border-slate-700 border-2 mt-10"
         >
           Submit
         </button>
