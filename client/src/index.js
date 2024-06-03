@@ -13,10 +13,10 @@ root.render(
   <BrowserRouter>
     <App>
       <Routes>
-        <Route path={'/login'} element={<LoginPage />} />
-        <Route path={'/register'} element={<RegisterPage />} />
-        <Route path={'/'} element={<DashboardPage />} />
-        <Route path={'/*'} element={<NotFound />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/*" element={<DashboardPage />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </App>
   </BrowserRouter>,
