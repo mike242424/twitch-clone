@@ -6,7 +6,7 @@ const ChannelAvatar = ({ channel, isLink, height, width }) => {
       <div
         className={`${height ? 'h-10' : 'h-16'} ${
           width ? 'w-10' : 'w-16'
-        } bg-slate-500 w-10 h-10 rounded-full`}
+        } bg-slate-500 rounded-full`}
       ></div>
     ) : (
       <img
