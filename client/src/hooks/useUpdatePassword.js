@@ -3,24 +3,19 @@ import { useState } from 'react';
 import { useUserDetails } from './useUserDetails';
 import { useNavigate } from 'react-router-dom';
 
-export function useUpdateChannelSettings() {
+export function useUpdatePassword() {
   const [error, setError] = useState('');
   const [isLoading, setLoading] = useState(false);
   const { token } = useUserDetails();
   const navigate = useNavigate();
 
-  async function updateChannelSettings(
-    username,
-    title,
-    description,
-    avatarUrl,
-  ) {
+  async function updatePassword(password, newPassword) {
     try {
       setLoading(true);
 
-      await axios.put(
-        'http://localhost:3002/api/settings/channel',
-        { username, title, description, avatarUrl },
+      await axios.patch(
+        'http://localhost:3002/api/settings/password',
+        { password, newPassword },
         {
           headers: { Authorization: `Bearer ${token}` },
         },
@@ -29,11 +24,11 @@ export function useUpdateChannelSettings() {
       navigate('/');
     } catch (err) {
       console.log(err);
-      setError('Error updating channel settings.');
+      setError('Error updating password.');
     } finally {
       setLoading(false);
     }
   }
 
-  return { isLoading, error, updateChannelSettings };
+  return { isLoading, error, updatePassword };
 }

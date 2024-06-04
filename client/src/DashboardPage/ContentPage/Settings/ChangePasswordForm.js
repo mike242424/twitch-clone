@@ -1,13 +1,12 @@
-import axios from 'axios';
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import { validatePassword } from '../../../validation/validatePassword';
+import { useUpdatePassword } from '../../../hooks/useUpdatePassword';
 
 const ChangePasswordForm = () => {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate();
+  const { isLoading, updatePassword } = useUpdatePassword();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -24,25 +23,9 @@ const ChangePasswordForm = () => {
       return;
     }
 
-    try {
-      const userJson = localStorage.getItem('user');
-      const user = userJson ? JSON.parse(userJson) : null;
-      const token = user ? user.token : null;
-
-      await axios.patch(
-        'http://localhost:3002/api/settings/password',
-        { password: currentPassword, newPassword },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        },
-      );
-
-      navigate('/');
-    } catch (err) {
-      console.log(err);
-      setError('Incorrect Password.');
-    }
+    updatePassword(currentPassword, newPassword);
   }
+
   return (
     <>
       <h3 className="text-center font-bold text-2xl text-slate-800 my-8">
@@ -77,6 +60,7 @@ const ChangePasswordForm = () => {
         <button
           type="submit"
           className="text-white bg-slate-800 hover:bg-slate-700 rounded-lg p-2 border-slate-800 hover:border-slate-700 border-2 mt-10"
+          disabled={isLoading}
         >
           Update Password
         </button>
