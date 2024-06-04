@@ -1,19 +1,14 @@
 import { useEffect, useState } from 'react';
 import ChannelCard from './ChannelCard';
 import axios from 'axios';
+import { useUserDetails } from '../../../hooks/useUserDetails';
 
 const ChannelBody = ({ channel }) => {
   const [isFollowing, setIsFollowing] = useState(false);
-  const [username, setUsername] = useState('');
+  const { token, username } = useUserDetails();
 
   useEffect(() => {
     async function getIsFollowing() {
-      const userJson = localStorage.getItem('user');
-      const user = userJson ? JSON.parse(userJson) : null;
-      const token = user ? user.token : null;
-      const jwtUsername = user ? user.username : null;
-      setUsername(jwtUsername);
-
       if (!token) {
         console.log('Access Denied. No token found.');
         return;
@@ -44,10 +39,6 @@ const ChannelBody = ({ channel }) => {
   }, [channel?._id]);
 
   async function handleToggleFollow() {
-    const userJson = localStorage.getItem('user');
-    const user = userJson ? JSON.parse(userJson) : null;
-    const token = user ? user.token : null;
-
     if (!token) {
       console.log('No token found');
       return;
@@ -83,7 +74,7 @@ const ChannelBody = ({ channel }) => {
           <div className="flex justify-start items-center gap-4 p-4">
             <ChannelCard channel={channel} />
           </div>
-          {username !== channel?.username && (
+          {username !== channel?.username && token && (
             <div className="p-4">
               <button
                 className={`${
