@@ -21,7 +21,7 @@ export function useChannelDetails() {
       setChannel(response.data);
     } catch (err) {
       console.log(err);
-      setError(err.message || 'Failed to fetch channel settings');
+      setError(err.message || 'Failed to fetch channel details.');
     } finally {
       setLoading(false);
     }

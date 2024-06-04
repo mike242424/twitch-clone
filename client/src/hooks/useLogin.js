@@ -27,7 +27,7 @@ export function useLogin() {
 
       navigate('/');
     } catch (err) {
-      setError(err.response.data.error);
+      setError(err.response.data.error || 'Login failed.');
     } finally {
       setIsLoading(false);
     }

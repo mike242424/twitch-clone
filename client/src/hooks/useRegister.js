@@ -27,8 +27,8 @@ export function useRegister() {
       localStorage.setItem('user', JSON.stringify(userDetails));
 
       navigate('/');
-    } catch (error) {
-      setError();
+    } catch (err) {
+      setError(err.response.data.error || 'Register failed.');
     } finally {
       setIsLoading(false);
     }
