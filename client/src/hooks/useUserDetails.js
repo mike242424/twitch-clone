@@ -3,7 +3,7 @@ import { useState } from 'react';
 function getUserDetails() {
   const userDetails = localStorage.getItem('user');
 
-  if (useUserDetails) {
+  if (userDetails) {
     return JSON.parse(userDetails);
   }
 
@@ -21,7 +21,7 @@ export function useUserDetails() {
 
   return {
     isLoggedIn: userDetails ? true : false,
-    username: userDetails?.username ? useUserDetails.username : 'Guest',
+    username: userDetails?.username ? userDetails?.username : 'Guest',
     token: userDetails?.token ? userDetails.token : null,
     logout,
   };

@@ -11,7 +11,7 @@ export const getChannelSettings = async (req, res) => {
     ).populate('channel');
 
     res.send({
-      id: user.channel._id,
+      _id: user.channel._id,
       username: user.username,
       title: user.channel.title,
       description: user.channel.description,

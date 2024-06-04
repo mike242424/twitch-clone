@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const ChannelAvatar = ({ channel, isLink }) => {
+const ChannelAvatar = ({ channel, isLink, height, width }) => {
   const avatarContent =
     channel?.avatarUrl === 'none' ? (
       <div className="bg-slate-500 w-16 h-16 rounded-full"></div>
@@ -8,7 +8,9 @@ const ChannelAvatar = ({ channel, isLink }) => {
       <img
         src={channel?.avatarUrl}
         alt="user Avatar"
-        className="w-16 h-16 rounded-full"
+        className={`${width ? 'w-10' : 'w-16'} ${
+          height ? 'h-10' : 'h-16'
+        } rounded-full`}
       />
     );
 
