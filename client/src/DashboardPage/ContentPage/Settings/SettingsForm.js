@@ -127,7 +127,7 @@ const SettingsForm = ({ channelSettings, isLoading }) => {
           className="text-white bg-slate-800 hover:bg-slate-700 rounded-lg p-2 border-slate-800 hover:border-slate-700 border-2 mt-10"
           disabled={isLoading}
         >
-          Submit
+          Update Channel Settings
         </button>
         <p className="text-red-700 font-bold">{error}</p>
       </form>
