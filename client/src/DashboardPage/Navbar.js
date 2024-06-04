@@ -1,23 +1,9 @@
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import NavbarLogo from '../components/NavbarLogo';
-import { useEffect, useState } from 'react';
+import { useUserDetails } from '../hooks/useUserDetails';
 
 const Navbar = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const user = localStorage.getItem('user');
-    const userDetails = user ? JSON.parse(user) : null;
-    setIsAuthenticated(!!userDetails && !!userDetails.token);
-  }, []);
-
-  function handleLogout() {
-    localStorage.removeItem('user');
-    setIsAuthenticated(false);
-    navigate('/');
-    window.location.reload();
-  }
+  const { isLoggedIn, logout } = useUserDetails();
 
   return (
     <div className="flex justify-between items-center bg-slate-800 w-full p-5 px-6">
@@ -29,12 +15,12 @@ const Navbar = () => {
       </div>
 
       <div className="flex gap-4 text-white">
-        {isAuthenticated ? (
+        {isLoggedIn ? (
           <>
             <NavLink className="font-bold" to={'/settings'}>
               Account
             </NavLink>
-            <button className="font-bold" onClick={handleLogout}>
+            <button className="font-bold" onClick={logout}>
               Logout
             </button>
           </>

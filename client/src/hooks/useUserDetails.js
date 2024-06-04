@@ -14,12 +14,13 @@ export function useUserDetails() {
   const [userDetails, setUserDetails] = useState(getUserDetails());
 
   function logout() {
-    localStorage.removeItem('user');
     setUserDetails(null);
+    localStorage.removeItem('user');
+    window.location.href = '/';
   }
 
   return {
-    isLogged: Boolean(useUserDetails),
+    isLoggedIn: userDetails ? true : false,
     username: userDetails?.username ? useUserDetails.username : 'Guest',
     logout,
   };
