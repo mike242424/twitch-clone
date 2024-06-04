@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useChannelSettings } from '../../../hooks/useChannelSettings';
+import { useGetChannelSettings } from '../../../hooks/useGetChannelSettings';
 import SettingsForm from './SettingsForm';
 import ChangePasswordForm from './ChangePasswordForm';
 import StreamKey from './StreamKey';
@@ -9,7 +9,7 @@ import Unauthorized from '../../../components/Unauthorized';
 
 const Settings = () => {
   const { channelSettings, isLoading, getChannelSettings } =
-    useChannelSettings();
+    useGetChannelSettings();
   const { token } = useUserDetails();
 
   useEffect(() => {

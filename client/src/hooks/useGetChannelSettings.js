@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useUserDetails } from './useUserDetails';
 
-export function useChannelSettings() {
+export function useGetChannelSettings() {
   const [channelSettings, setChannelSettings] = useState(null);
   const [error, setError] = useState('');
   const [isLoading, setLoading] = useState(false);

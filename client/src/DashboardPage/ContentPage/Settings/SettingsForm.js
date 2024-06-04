@@ -1,10 +1,9 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { validateUsername } from '../../../validation/validateUsername';
 import { validateTitle } from '../../../validation/validateTitle';
 import { validateDescription } from '../../../validation/validateDescription';
 import { validateUrl } from '../../../validation/validateUrl';
+import { useUpdateChannelSettings } from '../../../hooks/useUpdateChannelSettings';
 
 const SettingsForm = ({ channelSettings, isLoading }) => {
   const [username, setUsername] = useState('');
@@ -12,7 +11,7 @@ const SettingsForm = ({ channelSettings, isLoading }) => {
   const [description, setDescription] = useState('');
   const [avatarUrl, setAvatarUrl] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate();
+  const { updateChannelSettings } = useUpdateChannelSettings();
 
   useEffect(() => {
     if (channelSettings) {
@@ -50,24 +49,7 @@ const SettingsForm = ({ channelSettings, isLoading }) => {
       return;
     }
 
-    try {
-      const userJson = localStorage.getItem('user');
-      const user = userJson ? JSON.parse(userJson) : null;
-      const token = user ? user.token : null;
-
-      await axios.put(
-        'http://localhost:3002/api/settings/channel',
-        { username, title, description, avatarUrl },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        },
-      );
-
-      navigate('/');
-    } catch (err) {
-      console.log(err);
-      setError('Error updating settings');
-    }
+    updateChannelSettings(username, title, description, avatarUrl);
   }
   return (
     <>

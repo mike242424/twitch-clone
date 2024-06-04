@@ -1,13 +1,13 @@
 import { NavLink } from 'react-router-dom';
 import NavbarLogo from '../components/NavbarLogo';
 import { useUserDetails } from '../hooks/useUserDetails';
-import { useChannelSettings } from '../hooks/useChannelSettings';
+import { useGetChannelSettings } from '../hooks/useGetChannelSettings';
 import { useEffect } from 'react';
 import ChannelAvatar from './ContentPage/Channels/ChannelAvatar';
 
 const Navbar = () => {
   const { isLoggedIn, logout } = useUserDetails();
-  const { channelSettings, getChannelSettings } = useChannelSettings();
+  const { channelSettings, getChannelSettings } = useGetChannelSettings();
 
   useEffect(() => {
     getChannelSettings();
