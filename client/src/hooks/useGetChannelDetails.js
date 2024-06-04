@@ -2,23 +2,26 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useUserDetails } from './useUserDetails';
 
-export function useChannelDetails() {
+export function useGetChannelDetails() {
   const [channel, setChannel] = useState(null);
   const [error, setError] = useState('');
   const [isLoading, setLoading] = useState(false);
   const { token } = useUserDetails();
 
-  async function getChannel(id) {
+  async function getChannelDetails(channelId) {
     try {
       setError('');
       setLoading(true);
-      const response = await axios.get(`http://localhost:3002/api/channel/`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      const response = await axios.get(
+        `http://localhost:3002/api/channels/${channelId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
-      });
+      );
 
-      setChannel(response.data);
+      setChannel(response.data.channelDetails);
     } catch (err) {
       console.log(err);
       setError(err.message || 'Failed to fetch channel details.');
@@ -27,5 +30,5 @@ export function useChannelDetails() {
     }
   }
 
-  return { isLoading, channel, error, getChannel };
+  return { isLoading, channel, error, getChannelDetails };
 }
