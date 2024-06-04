@@ -3,7 +3,7 @@ import NavbarLogo from '../components/NavbarLogo';
 import { useUserDetails } from '../hooks/useUserDetails';
 
 const Navbar = () => {
-  const { username, isLoggedIn, logout } = useUserDetails();
+  const { isLoggedIn, logout } = useUserDetails();
 
   return (
     <div className="flex justify-between items-center bg-slate-800 w-full p-5 px-6">
