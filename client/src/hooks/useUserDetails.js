@@ -22,6 +22,7 @@ export function useUserDetails() {
   return {
     isLoggedIn: userDetails ? true : false,
     username: userDetails?.username ? useUserDetails.username : 'Guest',
+    token: userDetails?.token ? userDetails.token : null,
     logout,
   };
 }

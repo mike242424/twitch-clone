@@ -44,7 +44,7 @@ const ChangePasswordForm = () => {
     }
   }
   return (
-    <div className="flex flex-col justify-center items-center w-full mb-10">
+    <>
       <h3 className="text-center font-bold text-2xl text-slate-800 my-8">
         Reset Password
       </h3>
@@ -82,7 +82,7 @@ const ChangePasswordForm = () => {
         </button>
         <p className="text-red-700 font-bold">{error}</p>
       </form>
-    </div>
+    </>
   );
 };
 
