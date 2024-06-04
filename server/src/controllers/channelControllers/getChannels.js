@@ -7,7 +7,7 @@ export const getChannels = async (req, res) => {
     );
 
     const channels = users
-      // .filter((user) => user.channel.isActive) // todo
+      .filter((user) => user.channel.isActive)
       .map((user) => {
         return {
           _id: user.channel._id,

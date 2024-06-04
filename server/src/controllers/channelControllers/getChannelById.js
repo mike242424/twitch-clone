@@ -7,10 +7,7 @@ export const getChannelById = async (req, res) => {
 
     const channel = await Channel.findById(channelId);
 
-    if (
-      !channel
-      // || !channel.isActive
-    ) {
+    if (!channel || !channel.isActive) {
       return res.status(404).send({ error: 'Channel not found.' });
     }
 
