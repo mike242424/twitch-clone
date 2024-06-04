@@ -4,10 +4,13 @@ import SettingsForm from './SettingsForm';
 import ChangePasswordForm from './ChangePasswordForm';
 import StreamKey from './StreamKey';
 import LoadingSpinner from '../../../components/LoadingSpinner';
+import { useUserDetails } from '../../../hooks/useUserDetails';
+import Unauthorized from '../../../components/Unauthorized';
 
 const Settings = () => {
-  const { channelSettings, isLoading, error, getChannelSettings } =
+  const { channelSettings, isLoading, getChannelSettings } =
     useChannelSettings();
+  const { token } = useUserDetails();
 
   useEffect(() => {
     getChannelSettings();
@@ -21,10 +24,8 @@ const Settings = () => {
     );
   }
 
-  if (error) {
-    <div className="flex items-center justify-center min-h-screen">
-      {error}
-    </div>;
+  if (!token) {
+    return <Unauthorized />;
   }
 
   return (
