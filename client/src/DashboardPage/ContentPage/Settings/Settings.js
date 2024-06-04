@@ -40,7 +40,9 @@ const Settings = () => {
         <div className="flex flex-col items-center bg-slate-400 p-6 rounded-lg shadow-md mb-6 w-11/12 md:w-10/12 lg:w-9/12">
           <ChangePasswordForm />
         </div>
-        <StreamKey streamKey={channelSettings?.streamKey} />
+        <div className="flex flex-col items-center bg-slate-400 p-6 rounded-lg shadow-md mb-6 w-11/12 md:w-10/12 lg:w-9/12">
+          <StreamKey streamKey={channelSettings?.streamKey} />
+        </div>
       </div>
     </>
   );
