@@ -1,23 +1,23 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useEffect } from 'react';
 import ChannelCard from './ChannelCard';
+import { useGetChannels } from '../../../hooks/useGetChannels';
+import LoadingSpinner from '../../../components/LoadingSpinner';
 
 const Channels = () => {
-  const [channels, setChannels] = useState([]);
+  const { channels, getChannels, isLoading } = useGetChannels();
 
   useEffect(() => {
-    async function getChannels() {
-      try {
-        const response = await axios.get('http://localhost:3002/api/channels/');
-
-        setChannels(response.data.channels);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-
     getChannels();
   }, []);
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <LoadingSpinner />
+      </div>
+    );
+  }
+
   return (
     <>
       <h1 className="text-center font-bold text-3xl text-slate-800 my-8">
