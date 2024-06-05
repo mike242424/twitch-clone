@@ -4,8 +4,9 @@ const NewMessageInput = ({ sendMessage }) => {
   const [message, setMessage] = useState('');
 
   function handleSendMessage() {
-    if (message) {
-      console.log(message);
+    console.log(message);
+    if (message.length > 0) {
+      sendMessage(message);
     }
     setMessage('');
   }

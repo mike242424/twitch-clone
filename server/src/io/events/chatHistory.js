@@ -32,8 +32,8 @@ export async function emitChatMessage(io, messageData) {
 
     if (channel) {
       const newMessage = new Message({
-        content: messageData.message.content,
-        author: messageData.message.author,
+        content: messageData?.message?.content,
+        author: messageData?.message?.author,
         date: new Date(),
       });
 
@@ -42,6 +42,8 @@ export async function emitChatMessage(io, messageData) {
       channel.messages.push(newMessage._id);
 
       await channel.save();
+
+      io.to(messageData.toChannel).emit('chatMessage', newMessage);
     }
   } catch (err) {
     console.log(err);

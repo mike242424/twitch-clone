@@ -14,6 +14,10 @@ export function connectToSocketServer() {
     console.log('Received chat history:', data);
   });
 
+  socket.on('chatMessage', (data) => {
+    console.log(data);
+  });
+
   socket.on('disconnect', () => {
     console.log('Disconnected from Socket.IO server');
   });
@@ -25,4 +29,19 @@ export function getChatHistory(channelId) {
   } else {
     console.error('Socket is not connected');
   }
+}
+
+export function sendChatMessage(toChannel, messageData) {
+  if (socket && socket.connected) {
+    socket.emit('chatMessage', {
+      toChannel,
+      message: messageData,
+    });
+  } else {
+    console.error('Socket is not connected');
+  }
+}
+
+export function leaveChat(channelId) {
+  socket.emit('leaveChat', channelId);
 }

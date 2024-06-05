@@ -1,9 +1,9 @@
 import Messages from './Messages';
 import NewMessageInput from './NewMessageInput';
-import { useChatHistory } from '../../../../hooks/useChatHistory';
+import { useChatHistory } from '../../../../hooks/useChatHistory.js';
 
 const ChannelChat = ({ channel }) => {
-  const { sendMessage, messages, loading } = useChatHistory(channel?._id);
+  const { messages, loading, sendMessage } = useChatHistory(channel?._id);
 
   if (loading) {
     return <div>Loading chat history...</div>;
