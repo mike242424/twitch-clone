@@ -18,7 +18,7 @@ export const getChannelSettings = async (req, res) => {
       avatarUrl: user.channel.avatarUrl,
       streamKey: user.channel.streamKey,
     });
-  } catch (er) {
+  } catch (err) {
     console.log(err);
     return res.status(500).send({ error: 'Error occured.' });
   }
