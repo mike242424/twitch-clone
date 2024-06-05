@@ -1,12 +1,36 @@
-const NewMessageInput = () => {
+import { useState } from 'react';
+
+const NewMessageInput = ({ sendMessage }) => {
+  const [message, setMessage] = useState('');
+
+  function handleSendMessage() {
+    if (message) {
+      console.log(message);
+    }
+    setMessage('');
+  }
+
+  function handleEnterPress(e) {
+    if (e.key === 'Enter') {
+      handleSendMessage();
+    }
+  }
   return (
     <div className="flex lg:flex-col gap-2 w-full pt-4">
       <input
         className="p-2 rounded w-full"
         type="text"
         placeholder="Send a message"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+        onKeyDown={handleEnterPress}
       />
-      <button className="bg-slate-800 text-white p-2 rounded">Send</button>
+      <button
+        onClick={handleSendMessage}
+        className="bg-slate-800 text-white p-2 rounded"
+      >
+        Send
+      </button>
     </div>
   );
 };
