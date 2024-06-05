@@ -1,68 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import ChannelCard from './ChannelCard';
-import axios from 'axios';
 import { useUserDetails } from '../../../hooks/useUserDetails';
+import { useFollowStatus } from '../../../hooks/useFollowStatus';
 
 const ChannelBody = ({ channel }) => {
-  const [isFollowing, setIsFollowing] = useState(false);
+  const { isFollowing, toggleFollow, getIsFollowing } = useFollowStatus();
   const { token, username } = useUserDetails();
 
+  console.log(isFollowing);
+
   useEffect(() => {
-    async function getIsFollowing() {
-      if (!token) {
-        console.log('Access Denied. No token found.');
-        return;
-      }
-
-      try {
-        const response = await axios.get(
-          'http://localhost:3002/api/channels/followed',
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          },
-        );
-
-        const followedChannelIds = response.data.followedChannels.map(
-          (channel) => channel._id,
-        );
-        const isCurrentlyFollowing = followedChannelIds.includes(channel?._id);
-
-        setIsFollowing(isCurrentlyFollowing);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-
-    getIsFollowing();
+    getIsFollowing(channel);
   }, [channel?._id]);
-
-  async function handleToggleFollow() {
-    if (!token) {
-      console.log('No token found');
-      return;
-    }
-
-    try {
-      if (!isFollowing) {
-        await axios.post(
-          'http://localhost:3002/api/channels/follow',
-          { channelId: channel?._id },
-          { headers: { Authorization: `Bearer ${token}` } },
-        );
-      } else {
-        await axios.delete('http://localhost:3002/api/channels/follow', {
-          headers: { Authorization: `Bearer ${token}` },
-          data: { channelId: channel?._id },
-        });
-      }
-      window.location.reload();
-      setIsFollowing(!isFollowing);
-    } catch (err) {
-      console.log(err);
-    }
-  }
 
   return (
     <div className="flex flex-1 flex-col">
@@ -80,7 +29,7 @@ const ChannelBody = ({ channel }) => {
                 className={`${
                   isFollowing ? 'bg-slate-400' : 'bg-slate-800'
                 } p-4 rounded-lg text-white font-bold`}
-                onClick={handleToggleFollow}
+                onClick={() => toggleFollow(channel._id)}
               >
                 {isFollowing ? 'Unfollow' : 'Follow'}
               </button>
