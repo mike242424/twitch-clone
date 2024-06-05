@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import ChannelCard from './ChannelCard';
 import { useUserDetails } from '../../../hooks/useUserDetails';
 import { useFollowStatus } from '../../../hooks/useFollowStatus';
+import Stream from './Stream';
 
 const ChannelBody = ({ channel }) => {
   const { isFollowing, toggleFollow, getIsFollowing } = useFollowStatus();
@@ -13,9 +14,10 @@ const ChannelBody = ({ channel }) => {
 
   return (
     <div className="flex flex-1 flex-col">
-      <div className="flex justify-center items-center w-full bg-slate-200 h-[400px]">
+      {/* <div className="flex justify-center items-center w-full bg-slate-200 h-[400px]">
         <span className="font-bold">Channel is offline</span>
-      </div>
+      </div> */}
+      <Stream />
       <div className="flex flex-col items-start p-4">
         <div className="flex justify-between items-center w-full">
           <div className="flex justify-start items-center gap-4 p-4">
