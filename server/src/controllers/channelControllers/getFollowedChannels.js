@@ -1,3 +1,4 @@
+import axios from 'axios';
 import User from '../../models/User.js';
 
 export const getFollowedChannels = async (req, res) => {
@@ -9,7 +10,7 @@ export const getFollowedChannels = async (req, res) => {
       'username followedChannels',
     ).populate({
       path: 'followedChannels',
-      select: '_id title avatarUrl',
+      select: '_id title avatarUrl streamKey',
       populate: {
         path: 'userId',
         select: 'username',
@@ -20,12 +21,25 @@ export const getFollowedChannels = async (req, res) => {
       return res.status(404).send({ error: 'User not found.' });
     }
 
+    const response = await axios.get('http://localhost:8000/api/streams');
+
+    const liveStreams = [];
+
+    for (const streamId in response.data?.live) {
+      if (
+        response.data.live[streamId].publisher &&
+        response.data.live[streamId].publisher !== null
+      ) {
+        liveStreams.push(streamId);
+      }
+    }
+
     const channelsData = user.followedChannels.map((channel) => ({
       _id: channel._id,
       title: channel.title,
       avatarUrl: channel.avatarUrl,
       username: channel.userId.username,
-      isOnline: false,
+      isOnline: liveStreams.includes(channel.streamKey),
     }));
 
     return res.send({ followedChannels: channelsData });

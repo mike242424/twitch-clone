@@ -6,6 +6,8 @@ import { useGetFollowedChannels } from '../hooks/useGetFollowedChannels';
 const Sidebar = () => {
   const { followedChannels, getFollowedChannels } = useGetFollowedChannels();
 
+  console.log(followedChannels);
+
   useEffect(() => {
     getFollowedChannels();
   }, []);
