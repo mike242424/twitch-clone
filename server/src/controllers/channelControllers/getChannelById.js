@@ -13,8 +13,7 @@ export const getChannelById = async (req, res) => {
 
     const user = await User.findOne({ channel: channelId }, { username: 1 });
 
-    // todo
-    const streamUrl = 'http';
+    const streamUrl = `http://localhost:8000/live/${channel.streamKey}.flv`;
 
     // todo
     const isOnline = false;
