@@ -1,21 +1,32 @@
 import io from 'socket.io-client';
+import { useChatStore } from '../store/chatStore';
+import { v4 as uuidv4 } from 'uuid';
 
 let socket;
 
 export function connectToSocketServer() {
   socket = io('http://localhost:3002');
 
-  socket.on('connect', () => {
-    console.log('Connected to Socket.io server');
-    console.log('Socket ID:', socket.id);
+  socket.on('chatHistory', (chatHistory) => {
+    const { setChatHistory } = useChatStore.getState();
+    setChatHistory(chatHistory);
   });
 
-  socket.on('chatHistory', (data) => {
-    console.log('Received chat history:', data);
-  });
+  socket.on('chatMessage', (newMessage) => {
+    const { chatHistory, setChatHistory } = useChatStore.getState();
+    const messageId = uuidv4();
 
-  socket.on('chatMessage', (data) => {
-    console.log(data);
+    setChatHistory({
+      channelId: chatHistory.channelId,
+      messages: [
+        ...chatHistory.messages,
+        {
+          author: newMessage.author,
+          content: newMessage.content,
+          _id: messageId,
+        },
+      ],
+    });
   });
 
   socket.on('disconnect', () => {
@@ -43,5 +54,9 @@ export function sendChatMessage(toChannel, messageData) {
 }
 
 export function leaveChat(channelId) {
-  socket.emit('leaveChat', channelId);
+  if (socket && socket.connected) {
+    socket.emit('leaveChat', channelId);
+  } else {
+    console.error('Socket is not connected');
+  }
 }

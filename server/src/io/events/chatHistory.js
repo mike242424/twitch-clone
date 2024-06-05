@@ -9,6 +9,7 @@ export async function emitChatHistory(socket, channelId) {
       return socket.emit('chatHistory', {
         channelId,
         messages: channel.messages.map((message) => ({
+          _id: message._id,
           author: message.author,
           content: message.content,
         })),

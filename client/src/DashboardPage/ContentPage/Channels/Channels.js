@@ -2,14 +2,12 @@ import { useEffect } from 'react';
 import ChannelCard from './ChannelCard';
 import { useGetChannels } from '../../../hooks/useGetChannels';
 import LoadingSpinner from '../../../components/LoadingSpinner';
-import { connectToSocketServer } from '../../../socketIoConnection/socketIoCOnnection';
 
 const Channels = () => {
   const { channels, getChannels, isLoading } = useGetChannels();
 
   useEffect(() => {
     getChannels();
-    connectToSocketServer();
   }, []);
 
   if (isLoading) {

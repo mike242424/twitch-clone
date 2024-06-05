@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useChatStore } from '../store/chatStore';
 import {
   getChatHistory,
   leaveChat,
@@ -7,31 +8,30 @@ import {
 import { useUserDetails } from './useUserDetails';
 
 export function useChatHistory(channelId) {
-  const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const { chatHistory, setChatHistory } = useChatStore();
   const { isLoggedIn, username } = useUserDetails();
 
   useEffect(() => {
-    function fetchChatHistory() {
-      setLoading(true);
-      setError('');
-      try {
-        const history = getChatHistory(channelId);
-        setMessages(history);
-      } catch (err) {
-        console.log(err);
-        setError('Error fetching chat history.');
-      } finally {
-        setLoading(false);
-      }
+    setLoading(true);
+    setError('');
+    try {
+      const fetchChatHistory = async () => {
+        const history = await getChatHistory(channelId);
+        setChatHistory(channelId, history);
+      };
+      fetchChatHistory();
+    } catch (err) {
+      console.log(err);
+      setError('Error fetching chat history.');
+    } finally {
+      setLoading(false);
 
       return () => {
         leaveChat(channelId);
       };
     }
-
-    fetchChatHistory();
   }, [channelId]);
 
   function sendMessage(message) {
@@ -51,7 +51,7 @@ export function useChatHistory(channelId) {
   }
 
   return {
-    messages,
+    messages: chatHistory?.channelId === channelId ? chatHistory?.messages : [],
     loading,
     error,
     sendMessage,

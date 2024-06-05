@@ -1,9 +1,15 @@
 import Messages from './Messages';
 import NewMessageInput from './NewMessageInput';
 import { useChatHistory } from '../../../../hooks/useChatHistory.js';
+import { useEffect } from 'react';
+import { connectToSocketServer } from '../../../../socketIoConnection/socketIoCOnnection.js';
 
 const ChannelChat = ({ channel }) => {
   const { messages, loading, sendMessage } = useChatHistory(channel?._id);
+
+  useEffect(() => {
+    connectToSocketServer();
+  }, []);
 
   if (loading) {
     return <div>Loading chat history...</div>;
