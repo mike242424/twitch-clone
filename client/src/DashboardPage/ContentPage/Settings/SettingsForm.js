@@ -34,13 +34,13 @@ const SettingsForm = ({ channelSettings }) => {
 
     if (!validateUsername(username)) {
       setError(
-        'Invalid username. Must be between 3 and 30 characters with no spaces allowed.',
+        'Invalid username. Must be between 3 and 10 characters with no spaces allowed.',
       );
       return;
     }
 
     if (!validateTitle(title)) {
-      setError('Invalid title. Must be between 3 and 30 characters.');
+      setError('Invalid title. Must be between 3 and 15 characters.');
       return;
     }
 

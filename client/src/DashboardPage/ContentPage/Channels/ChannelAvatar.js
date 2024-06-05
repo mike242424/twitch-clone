@@ -1,20 +1,18 @@
 import { Link } from 'react-router-dom';
 
-const ChannelAvatar = ({ channel, isLink, height, width }) => {
+const ChannelAvatar = ({ channel, isLink, isSmall }) => {
   const avatarContent =
     channel?.avatarUrl === 'none' ? (
       <div
-        className={`${height ? 'h-10' : 'h-16'} ${
-          width ? 'w-10' : 'w-16'
+        className={`${
+          isSmall ? 'h-10 w-10' : 'h-16 w-16'
         } bg-slate-500 rounded-full`}
       ></div>
     ) : (
       <img
         src={channel?.avatarUrl}
         alt="user Avatar"
-        className={`${width ? 'w-10' : 'w-16'} ${
-          height ? 'h-10' : 'h-16'
-        } rounded-full`}
+        className={`${isSmall ? 'h-10 w-10' : 'h-16 w-16'}  rounded-full`}
       />
     );
 

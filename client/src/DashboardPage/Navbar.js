@@ -31,8 +31,7 @@ const Navbar = () => {
             {channelSettings && (
               <ChannelAvatar
                 channel={channelSettings}
-                width={true}
-                height={true}
+                isSmall={true}
                 isLink={true}
               />
             )}

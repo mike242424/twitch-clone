@@ -26,7 +26,11 @@ const Sidebar = () => {
               <ChannelAvatar channel={channel} isLink={true} />
             </div>
             <div className="hidden xl:block">
-              <ChannelCard channel={channel} isLargeText={true} />
+              <ChannelCard
+                channel={channel}
+                isLargeText={true}
+                isSmall={true}
+              />
             </div>
           </div>
         ))}
