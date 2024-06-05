@@ -9,7 +9,8 @@ export function registerSocketServer(server) {
   });
 
   io.on('connection', (socket) => {
-    console.log('a user conencted');
-    console.log(socket.id);
+    socket.on('chatHistory', (channelId) => {
+      emitChatHistory(socket, channelId);
+    });
   });
 }
