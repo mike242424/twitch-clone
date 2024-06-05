@@ -7,8 +7,6 @@ const ChannelBody = ({ channel }) => {
   const { isFollowing, toggleFollow, getIsFollowing } = useFollowStatus();
   const { token, username } = useUserDetails();
 
-  console.log(isFollowing);
-
   useEffect(() => {
     getIsFollowing(channel);
   }, [channel?._id]);
