@@ -7,6 +7,7 @@ import mongoose from 'mongoose';
 import authRoutes from './src/routes/authRoutes.js';
 import channelRoutes from './src/routes/channelRoutes.js';
 import settingsRoutes from './src/routes/settingsRoutes.js';
+import { registerSocketServer } from './src/io/io.js';
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ app.use('/api/channels', channelRoutes);
 app.use('/api/settings', settingsRoutes);
 
 const server = http.createServer(app);
+registerSocketServer(server);
 
 mongoose
   .connect(process.env.MONGO_DB_URI)
