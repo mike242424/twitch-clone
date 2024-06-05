@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { validatePassword } from '../../../validation/validatePassword';
 import { useUpdatePassword } from '../../../hooks/useUpdatePassword';
 
@@ -6,7 +6,15 @@ const ChangePasswordForm = () => {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [error, setError] = useState('');
-  const { isLoading, updatePassword } = useUpdatePassword();
+  const {
+    isLoading,
+    error: updatePasswordError,
+    updatePassword,
+  } = useUpdatePassword();
+
+  useEffect(() => {
+    setError(updatePasswordError);
+  }, [updatePasswordError]);
 
   async function handleSubmit(e) {
     e.preventDefault();

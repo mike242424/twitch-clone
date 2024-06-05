@@ -1,17 +1,16 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useUserDetails } from './useUserDetails';
-import { useNavigate } from 'react-router-dom';
 
 export function useUpdatePassword() {
   const [error, setError] = useState('');
   const [isLoading, setLoading] = useState(false);
   const { token } = useUserDetails();
-  const navigate = useNavigate();
 
   async function updatePassword(password, newPassword) {
     try {
       setLoading(true);
+      setError('');
 
       await axios.patch(
         'http://localhost:3002/api/settings/password',
@@ -21,10 +20,10 @@ export function useUpdatePassword() {
         },
       );
 
-      navigate('/');
+      window.location.reload();
     } catch (err) {
       console.log(err);
-      setError('Error updating password.');
+      setError('Incorrect Password.');
     } finally {
       setLoading(false);
     }

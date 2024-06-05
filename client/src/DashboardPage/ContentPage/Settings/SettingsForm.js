@@ -2,25 +2,30 @@ import { useEffect, useState } from 'react';
 import { validateUsername } from '../../../validation/validateUsername';
 import { validateTitle } from '../../../validation/validateTitle';
 import { validateDescription } from '../../../validation/validateDescription';
-import { validateUrl } from '../../../validation/validateUrl';
 import { useUpdateChannelSettings } from '../../../hooks/useUpdateChannelSettings';
 
-const SettingsForm = ({ channelSettings, isLoading }) => {
+const SettingsForm = ({ channelSettings }) => {
   const [username, setUsername] = useState('');
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [avatarUrl, setAvatarUrl] = useState('');
   const [error, setError] = useState('');
-  const { updateChannelSettings } = useUpdateChannelSettings();
+  const {
+    updateChannelSettings,
+    isLoading,
+    error: updateChannelSettingsError,
+  } = useUpdateChannelSettings();
 
   useEffect(() => {
-    if (channelSettings) {
-      setUsername(channelSettings.username);
-      setTitle(channelSettings.title);
-      setDescription(channelSettings.description);
-      setAvatarUrl(channelSettings.avatarUrl);
-    }
+    setUsername(channelSettings?.username);
+    setTitle(channelSettings?.title);
+    setDescription(channelSettings?.description);
+    setAvatarUrl(channelSettings?.avatarUrl);
   }, [channelSettings]);
+
+  useEffect(() => {
+    setError(updateChannelSettingsError);
+  }, [updateChannelSettingsError]);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -41,11 +46,6 @@ const SettingsForm = ({ channelSettings, isLoading }) => {
 
     if (!validateDescription(description)) {
       setError('Invalid description. Must be between 10 and 200 characters.');
-      return;
-    }
-
-    if (!validateUrl(avatarUrl)) {
-      setError('Invalid Avatar Url.');
       return;
     }
 

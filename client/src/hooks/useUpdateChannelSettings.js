@@ -1,13 +1,11 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useUserDetails } from './useUserDetails';
-import { useNavigate } from 'react-router-dom';
 
 export function useUpdateChannelSettings() {
   const [error, setError] = useState('');
   const [isLoading, setLoading] = useState(false);
   const { token } = useUserDetails();
-  const navigate = useNavigate();
 
   async function updateChannelSettings(
     username,
@@ -26,10 +24,10 @@ export function useUpdateChannelSettings() {
         },
       );
 
-      navigate('/');
+      window.location.reload();
     } catch (err) {
       console.log(err);
-      setError('Error updating channel settings.');
+      setError('Invalid avatar url.');
     } finally {
       setLoading(false);
     }
