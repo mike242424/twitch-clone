@@ -14,8 +14,7 @@ const ChannelBody = ({ channel }) => {
 
   return (
     <div className="flex flex-1 flex-col">
-      {channel?.streamUrl ? (
-        //  && channel?.isOnline
+      {channel?.streamUrl && channel?.isOnline ? (
         <Stream channel={channel} />
       ) : (
         <div className="flex justify-center items-center w-full bg-slate-200 h-[400px]">

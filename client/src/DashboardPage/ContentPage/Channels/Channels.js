@@ -6,6 +6,8 @@ import LoadingSpinner from '../../../components/LoadingSpinner';
 const Channels = () => {
   const { channels, getChannels, isLoading } = useGetChannels();
 
+  console.log(channels);
+
   useEffect(() => {
     getChannels();
   }, []);
