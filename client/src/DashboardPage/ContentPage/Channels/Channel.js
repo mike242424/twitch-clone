@@ -2,15 +2,20 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ChannelBody from './ChannelBody';
 import ChannelChat from './ChannelChat';
+import NotFound from '../../../components/NotFound.js';
 import { useGetChannelDetails } from '../../../hooks/useGetChannelDetails';
 
 const Channel = () => {
-  const { channel, getChannelDetails } = useGetChannelDetails();
+  const { channel, getChannelDetails, error } = useGetChannelDetails();
   const { id } = useParams();
 
   useEffect(() => {
     getChannelDetails(id);
   }, [id]);
+
+  if (error) {
+    return <NotFound />;
+  }
 
   return (
     <div className="flex lg:flex-row flex-col w-full">
