@@ -34,7 +34,7 @@ const Channels = () => {
             <div className="bg-slate-300 w-full h-48 rounded-lg flex justify-center items-center">
               <span className=" text-white">Currently Offline</span>
             </div>
-            <ChannelCard channel={channel} />
+            <ChannelCard channel={channel} hasTitle={true} />
           </div>
         ))}
       </div>

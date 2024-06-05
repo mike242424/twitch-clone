@@ -24,7 +24,7 @@ const ChannelBody = ({ channel }) => {
       <div className="flex flex-col items-start p-4">
         <div className="flex justify-between items-center w-full">
           <div className="flex justify-start items-center gap-4 p-4">
-            <ChannelCard channel={channel} />
+            <ChannelCard channel={channel} hasTitle={true} />
           </div>
           {username !== channel?.username && token && (
             <div className="p-4">
