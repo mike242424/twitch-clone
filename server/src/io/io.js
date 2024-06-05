@@ -1,9 +1,7 @@
 import { Server } from 'socket.io';
 
-let io;
-
 export function registerSocketServer(server) {
-  io = new Server(server, {
+  let io = new Server(server, {
     cors: {
       origin: '*',
       methods: ['GET', 'POST'],
