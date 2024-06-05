@@ -16,7 +16,7 @@ const Sidebar = () => {
     <>
       {token && (
         <div
-          className={`bg-slate-300 text-slate-800 hidden md:block sm:w-18 xl:w-64 p-2 xl:p-6 ${
+          className={`bg-slate-400 text-slate-800 hidden md:block sm:w-18 xl:w-64 p-2 xl:p-6 ${
             followedChannels?.length > 0 ? '' : 'w-20'
           } `}
         >

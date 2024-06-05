@@ -17,8 +17,8 @@ const ChannelBody = ({ channel }) => {
       {channel?.streamUrl && channel?.isOnline ? (
         <Stream channel={channel} />
       ) : (
-        <div className="flex justify-center items-center w-full bg-slate-200 h-[400px]">
-          <span className="font-bold">Channel is offline</span>
+        <div className="flex justify-center items-center w-full bg-slate-300 h-[400px]">
+          <span className="font-bold text-slate-800">Channel is offline</span>
         </div>
       )}
       <div className="flex flex-col items-start p-4">
@@ -39,7 +39,6 @@ const ChannelBody = ({ channel }) => {
             </div>
           )}
         </div>
-
         <div className="flex flex-col my-4 p-4">
           <h3 className="font-bold text-md">About {channel?.username}</h3>
           <span className="font-bold text-sm">{channel?.description}</span>

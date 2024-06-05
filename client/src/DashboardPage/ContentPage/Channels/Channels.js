@@ -32,7 +32,9 @@ const Channels = () => {
             className="flex flex-col pb-8 hover:bg-slate-400 rounded-lg p-2"
           >
             <div className="bg-slate-300 w-full h-48 rounded-lg flex justify-center items-center">
-              <span className=" text-white">Currently Offline</span>
+              <span className=" text-slate-800 font-bold">
+                Currently Offline
+              </span>
             </div>
             <ChannelCard channel={channel} hasTitle={true} />
           </div>
