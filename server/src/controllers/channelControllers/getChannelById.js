@@ -38,7 +38,7 @@ export const getChannelById = async (req, res) => {
         title: channel.title,
         description: channel.description,
         avatarUrl: channel.avatarUrl,
-        isOnline: false,
+        isOnline,
         streamUrl,
       },
     });

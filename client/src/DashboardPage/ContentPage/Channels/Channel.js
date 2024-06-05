@@ -8,6 +8,7 @@ import { useGetChannelDetails } from '../../../hooks/useGetChannelDetails';
 const Channel = () => {
   const { channel, getChannelDetails, error } = useGetChannelDetails();
   const { id } = useParams();
+  console.log(channel);
 
   useEffect(() => {
     getChannelDetails(id);
