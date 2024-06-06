@@ -9,7 +9,7 @@ const Stream = ({ channel, isControls, isPlaying }) => {
         playing={isPlaying}
         controls={isControls}
         width="100%"
-        height="auto"
+        height="100%"
       />
     </div>
   );

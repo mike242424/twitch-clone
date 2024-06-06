@@ -33,7 +33,7 @@ const Channels = () => {
             {channel?.isOnline && channel?.streamUrl ? (
               <Stream channel={channel} isControls={false} isPlaying={false} />
             ) : (
-              <div className="bg-slate-300 w-full h-48 flex justify-center items-center">
+              <div className="flex items-center justify-center bg-slate-300 w-[100%] h-[225px] sm:h-[100%]">
                 <span className=" text-slate-800 font-bold">
                   Currently Offline
                 </span>
