@@ -15,7 +15,7 @@ const ChannelBody = ({ channel }) => {
   return (
     <div className="flex flex-1 flex-col">
       {channel?.streamUrl && channel?.isOnline ? (
-        <Stream channel={channel} />
+        <Stream channel={channel} isControls={true} isPlaying={true} />
       ) : (
         <div className="flex justify-center items-center w-full bg-slate-300 h-[400px]">
           <span className="font-bold text-slate-800">Channel is offline</span>

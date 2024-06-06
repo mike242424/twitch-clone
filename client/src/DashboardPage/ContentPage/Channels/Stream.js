@@ -1,9 +1,16 @@
-import { ReactFlvPlayer } from 'react-flv-player';
+import React from 'react';
+import ReactPlayer from 'react-player';
 
-const Stream = ({ channel }) => {
+const Stream = ({ channel, isControls, isPlaying }) => {
   return (
     <div className="flex justify-center items-center w-full">
-      <ReactFlvPlayer width="100%" height="80%" url={channel?.streamUrl} />
+      <ReactPlayer
+        url={channel?.streamUrl}
+        playing={isPlaying}
+        controls={isControls}
+        width="100%"
+        height="auto"
+      />
     </div>
   );
 };

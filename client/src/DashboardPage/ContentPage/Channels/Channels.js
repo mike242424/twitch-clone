@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import ChannelCard from './ChannelCard';
 import { useGetChannels } from '../../../hooks/useGetChannels';
 import LoadingSpinner from '../../../components/LoadingSpinner';
+import Stream from './Stream';
 
 const Channels = () => {
   const { channels, getChannels, isLoading } = useGetChannels();
@@ -29,11 +30,15 @@ const Channels = () => {
             key={channel._id}
             className="flex flex-col pb-8 hover:bg-slate-400 rounded-lg p-2"
           >
-            <div className="bg-slate-300 w-full h-48 rounded-lg flex justify-center items-center">
-              <span className=" text-slate-800 font-bold">
-                Currently Offline
-              </span>
-            </div>
+            {channel?.isOnline && channel?.streamUrl ? (
+              <Stream channel={channel} isControls={false} isPlaying={false} />
+            ) : (
+              <div className="bg-slate-300 w-full h-48 flex justify-center items-center">
+                <span className=" text-slate-800 font-bold">
+                  Currently Offline
+                </span>
+              </div>
+            )}
             <ChannelCard channel={channel} hasTitle={true} />
           </div>
         ))}

@@ -29,6 +29,7 @@ export const getChannels = async (req, res) => {
           avatarUrl: user.channel.avatarUrl,
           username: user.username,
           isOnline: liveStreams.includes(user.channel?.streamKey),
+          streamUrl: `http://localhost:8000/live/${user.channel.streamKey}.flv`,
         };
       });
 
