@@ -28,17 +28,11 @@ export function connectToSocketServer() {
       ],
     });
   });
-
-  socket.on('disconnect', () => {
-    console.log('Disconnected from Socket.IO server');
-  });
 }
 
 export function getChatHistory(channelId) {
   if (socket && socket.connected) {
     socket.emit('chatHistory', channelId);
-  } else {
-    console.error('Socket is not connected');
   }
 }
 
@@ -48,15 +42,11 @@ export function sendChatMessage(toChannel, messageData) {
       toChannel,
       message: messageData,
     });
-  } else {
-    console.error('Socket is not connected');
   }
 }
 
 export function leaveChat(channelId) {
   if (socket && socket.connected) {
     socket.emit('leaveChat', channelId);
-  } else {
-    console.error('Socket is not connected');
   }
 }
