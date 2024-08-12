@@ -20,7 +20,7 @@ const LoginPage = () => {
             Don't have an account?{' '}
             <Link
               className="text-slate-800 hover:text-slate-700 font-bold"
-              to="https://twitch-clone-client-blond.vercel.app/register"
+              to="http://localhost:3000/register"
             >
               Register
             </Link>
