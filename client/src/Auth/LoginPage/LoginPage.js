@@ -14,12 +14,12 @@ const LoginPage = () => {
     <>
       <div className="flex flex-col justify-center items-center w-full">
         <Navbar />
-        <div className="bg-slate-500 border-2 border-slate-600 w-10/12 sm:w-6/12 p-10 px-20 mt-10 text-center">
+        <div className="bg-violet-500 border-2 border-violet-600 w-10/12 sm:w-6/12 p-10 px-20 mt-10 text-center">
           <LoginForm />
           <span className="text-white">
             Don't have an account?{' '}
             <Link
-              className="text-slate-800 hover:text-slate-700 font-bold"
+              className="text-violet-900 hover:text-violet-800 font-bold"
               to="http://localhost:3000/register"
             >
               Register

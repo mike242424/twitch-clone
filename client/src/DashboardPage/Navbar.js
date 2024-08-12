@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`flex justify-between items-center bg-slate-800 w-full ${
+      className={`flex justify-between items-center bg-violet-800 w-full ${
         channelSettings?.avatarUrl ? 'p-5' : 'p-7'
       }`}
     >

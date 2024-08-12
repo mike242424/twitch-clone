@@ -40,7 +40,7 @@ const RegisterForm = () => {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4 mb-10">
       <h1 className="text-center font-bold text-3xl text-white">Register</h1>
-      <label htmlFor="username" className="font-bold text-slate-800 text-start">
+      <label htmlFor="username" className="font-bold text-white text-start">
         Username:
       </label>
       <input
@@ -51,7 +51,7 @@ const RegisterForm = () => {
         value={username}
         onChange={(e) => setUsername(e.target.value)}
       />
-      <label htmlFor="email" className="font-bold text-slate-800 text-start">
+      <label htmlFor="email" className="font-bold text-white text-start">
         Email:
       </label>
       <input
@@ -62,7 +62,7 @@ const RegisterForm = () => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-      <label htmlFor="password" className="font-bold text-slate-800 text-start">
+      <label htmlFor="password" className="font-bold text-white text-start">
         Password:
       </label>
       <input
@@ -75,7 +75,7 @@ const RegisterForm = () => {
       />
       <label
         htmlFor="confirmPassword"
-        className="font-bold text-slate-800 text-start"
+        className="font-bold text-white text-start"
       >
         Confirm Password:
       </label>
@@ -88,7 +88,7 @@ const RegisterForm = () => {
         onChange={(e) => setConfirmPassword(e.target.value)}
       />
       <button
-        className="text-white bg-slate-800 hover:bg-slate-700 rounded-lg p-2 border-slate-800 hover:border-slate-700 border-2 mt-10"
+        className="text-white bg-violet-900 hover:bg-violet-800 rounded-lg p-2 border-violet-900 hover:border-violet-800 border-2 mt-10"
         type="submit"
         disabled={isLoading}
       >

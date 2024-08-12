@@ -27,7 +27,7 @@ const NewMessageInput = ({ sendMessage }) => {
       />
       <button
         onClick={handleSendMessage}
-        className="bg-slate-800 text-white p-2 rounded"
+        className="bg-violet-900 hover:bg-violet-800 text-white p-2 rounded"
       >
         Send
       </button>

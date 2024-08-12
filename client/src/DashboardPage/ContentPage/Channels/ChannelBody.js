@@ -17,8 +17,8 @@ const ChannelBody = ({ channel }) => {
       {channel?.streamUrl && channel?.isOnline ? (
         <Stream channel={channel} isControls={true} isPlaying={true} />
       ) : (
-        <div className="flex justify-center items-center w-full bg-slate-300 h-[400px]">
-          <span className="font-bold text-slate-800">Channel is offline</span>
+        <div className="flex justify-center items-center w-full bg-slate-200 h-[400px]">
+          <span className="font-bold text-violet-800">Channel is offline</span>
         </div>
       )}
       <div className="flex flex-col items-start p-4">
@@ -30,7 +30,7 @@ const ChannelBody = ({ channel }) => {
             <div className="p-4">
               <button
                 className={`${
-                  isFollowing ? 'bg-slate-400' : 'bg-slate-800'
+                  isFollowing ? 'bg-violet-400' : 'bg-violet-800'
                 } p-4 rounded-lg text-white font-bold`}
                 onClick={() => toggleFollow(channel._id)}
               >

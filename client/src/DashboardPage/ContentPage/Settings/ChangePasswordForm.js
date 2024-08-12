@@ -36,14 +36,14 @@ const ChangePasswordForm = () => {
 
   return (
     <>
-      <h3 className="text-center font-bold text-2xl text-slate-800 my-8">
+      <h3 className="text-center font-bold text-2xl text-white my-8">
         Reset Password
       </h3>
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-4 mb-4 w-4/6 md:w-3/6"
       >
-        <label htmlFor="currentPassword" className="font-bold text-slate-800">
+        <label htmlFor="currentPassword" className="font-bold text-white">
           Current Password:
         </label>
         <input
@@ -54,7 +54,7 @@ const ChangePasswordForm = () => {
           value={currentPassword}
           onChange={(e) => setCurrentPassword(e.target.value)}
         />
-        <label htmlFor="newPassword" className="font-bold text-slate-800">
+        <label htmlFor="newPassword" className="font-bold text-white">
           New Password:
         </label>
         <input
@@ -67,7 +67,7 @@ const ChangePasswordForm = () => {
         />
         <button
           type="submit"
-          className="text-white bg-slate-800 hover:bg-slate-700 rounded-lg p-2 border-slate-800 hover:border-slate-700 border-2 mt-10"
+          className="text-white bg-violet-900 hover:bg-violet-800 rounded-lg p-2 border-violet-900 hover:border-violet-800 border-2 mt-10"
           disabled={isLoading}
         >
           Update Password
