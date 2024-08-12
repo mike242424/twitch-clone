@@ -1,4 +1,4 @@
-import NavbarLogo from '../components/NavbarLogo';
+import NavbarLogo from '../Components/NavbarLogo';
 
 const Navbar = () => {
   return (

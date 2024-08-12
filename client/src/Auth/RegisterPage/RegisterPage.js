@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import RegisterForm from './RegisterForm';
-import Loading from '../../components/LoadingSpinner';
+import Loading from '../../Components/LoadingSpinner';
 import { useRegister } from '../../hooks/useRegister';
 import Navbar from '../Navbar';
 

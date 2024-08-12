@@ -4,7 +4,7 @@ import ChannelBody from './ChannelBody';
 import ChannelChat from './Chat/ChannelChat.js';
 
 import { useGetChannelDetails } from '../../../hooks/useGetChannelDetails';
-import NotFound from '../../../components/NotFound.js';
+import NotFound from '../../../Components/NotFound.js';
 
 const Channel = () => {
   const { channel, getChannelDetails, error } = useGetChannelDetails();

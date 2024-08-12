@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import ChannelCard from './ChannelCard';
 import { useGetChannels } from '../../../hooks/useGetChannels';
-import LoadingSpinner from '../../../components/LoadingSpinner';
+import LoadingSpinner from '../../../Components/LoadingSpinner';
 import Stream from './Stream';
 
 const Channels = () => {

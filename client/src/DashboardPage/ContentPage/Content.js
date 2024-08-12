@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Channels from './Channels/Channels.js';
 import Channel from './Channels/Channel.js';
 import Settings from './Settings/Settings.js';
-import NotFound from '../../components/NotFound.js';
+import NotFound from '../../Components/NotFound.js';
 
 const Content = () => {
   return (

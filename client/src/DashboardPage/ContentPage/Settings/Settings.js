@@ -3,9 +3,9 @@ import { useGetChannelSettings } from '../../../hooks/useGetChannelSettings';
 import SettingsForm from './SettingsForm';
 import ChangePasswordForm from './ChangePasswordForm';
 import StreamKey from './StreamKey';
-import LoadingSpinner from '../../../components/LoadingSpinner';
+import LoadingSpinner from '../../../Components/LoadingSpinner';
 import { useUserDetails } from '../../../hooks/useUserDetails';
-import Unauthorized from '../../../components/Unauthorized';
+import Unauthorized from '../../../Components/Unauthorized';
 
 const Settings = () => {
   const { channelSettings, isLoading, getChannelSettings } =

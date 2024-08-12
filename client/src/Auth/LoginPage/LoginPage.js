@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import LoginForm from './LoginForm';
-import Loading from '../../components/LoadingSpinner';
+import Loading from '../../Components/LoadingSpinner';
 import { useLogin } from '../../hooks/useLogin';
 import Navbar from '../Navbar';
 

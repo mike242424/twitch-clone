@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import NavbarLogo from '../components/NavbarLogo';
+import NavbarLogo from '../Components/NavbarLogo';
 import { useUserDetails } from '../hooks/useUserDetails';
 import { useGetChannelSettings } from '../hooks/useGetChannelSettings';
 import { useEffect } from 'react';
