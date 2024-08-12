@@ -13,13 +13,10 @@ export function useGetFollowedChannels() {
       setError('');
       setLoading(true);
       const response = await axios.get(
-        'https://twitch-clone-server.vercel.app/api/channels/followed',
+        'http://localhost:3002/api/channels/followed',
         {
           headers: {
             Authorization: `Bearer ${token}`,
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            'Cache-Control': 'no-cache',
           },
         },
       );
