@@ -4,10 +4,6 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
-import User from './src/models/User.js';
-import Channel from './src/models/Channel.js';
-import Message from './src/models/Message.js';
-
 import authRoutes from './src/routes/authRoutes.js';
 import channelRoutes from './src/routes/channelRoutes.js';
 import settingsRoutes from './src/routes/settingsRoutes.js';
@@ -19,8 +15,16 @@ const PORT = process.env.PORT || process.env.API_PORT;
 
 const app = express();
 
+const corsOptions = {
+  origin: 'https://twitch-clone-client-blond.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
+
 app.use(express.json());
-app.use(cors());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/channels', channelRoutes);
