@@ -17,6 +17,7 @@ const app = express();
 
 const corsOptions = {
   origin: 'https://twitch-clone-client-blond.vercel.app',
+  credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
