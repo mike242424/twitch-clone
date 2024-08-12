@@ -17,7 +17,7 @@ export function useUpdateChannelSettings() {
       setLoading(true);
 
       await axios.put(
-        'http://localhost:3002/api/settings/channel',
+        'https://twitch-clone-server.vercel.app/api/settings/channel',
         { username, title, description, avatarUrl },
         {
           headers: { Authorization: `Bearer ${token}` },

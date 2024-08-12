@@ -13,7 +13,7 @@ export function useGetChannelSettings() {
       setError('');
       setLoading(true);
       const response = await axios.get(
-        'http://localhost:3002/api/settings/channel',
+        'https://twitch-clone-server.vercel.app/api/settings/channel',
         {
           headers: {
             Authorization: `Bearer ${token}`,

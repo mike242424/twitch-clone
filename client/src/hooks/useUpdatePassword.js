@@ -13,7 +13,7 @@ export function useUpdatePassword() {
       setError('');
 
       await axios.patch(
-        'http://localhost:3002/api/settings/password',
+        'https://twitch-clone-server.vercel.app/api/settings/password',
         { password, newPassword },
         {
           headers: { Authorization: `Bearer ${token}` },

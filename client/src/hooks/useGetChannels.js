@@ -10,7 +10,9 @@ export function useGetChannels() {
     try {
       setError('');
       setLoading(true);
-      const response = await axios.get('http://localhost:3002/api/channels/');
+      const response = await axios.get(
+        'https://twitch-clone-server.vercel.app/api/channels/',
+      );
 
       setChannels(response.data.channels);
     } catch (err) {

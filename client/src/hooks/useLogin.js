@@ -14,7 +14,7 @@ export function useLogin() {
       setIsLoading(true);
 
       const response = await axios.post(
-        'http://localhost:3002/api/auth/login',
+        'https://twitch-clone-server.vercel.app/api/auth/login',
         {
           username,
           password,

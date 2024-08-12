@@ -14,7 +14,7 @@ export function useRegister() {
       setIsLoading(true);
 
       const response = await axios.post(
-        'http://localhost:3002/api/auth/register',
+        'https://twitch-clone-server.vercel.app/api/auth/register',
         {
           username,
           email,

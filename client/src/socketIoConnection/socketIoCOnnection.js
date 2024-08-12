@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 let socket;
 
 export function connectToSocketServer() {
-  socket = io('http://localhost:3002');
+  socket = io('https://twitch-clone-server.vercel.app/');
 
   socket.on('chatHistory', (chatHistory) => {
     const { setChatHistory } = useChatStore.getState();
