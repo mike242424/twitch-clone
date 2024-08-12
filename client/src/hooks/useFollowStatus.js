@@ -13,7 +13,7 @@ export function useFollowStatus() {
       setError('');
       setLoading(true);
       const response = await axios.get(
-        `https://twitch-clone-server.vercel.app/api/channels/followed`,
+        `http://localhost:3002/api/channels/followed`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -43,18 +43,15 @@ export function useFollowStatus() {
 
       if (!isFollowing) {
         await axios.post(
-          'https://twitch-clone-server.vercel.app/api/channels/follow',
+          'http://localhost:3002/api/channels/follow',
           { channelId },
           { headers: { Authorization: `Bearer ${token}` } },
         );
       } else {
-        await axios.delete(
-          'https://twitch-clone-server.vercel.app/api/channels/follow',
-          {
-            headers: { Authorization: `Bearer ${token}` },
-            data: { channelId },
-          },
-        );
+        await axios.delete('http://localhost:3002/api/channels/follow', {
+          headers: { Authorization: `Bearer ${token}` },
+          data: { channelId },
+        });
       }
 
       window.location.reload();
