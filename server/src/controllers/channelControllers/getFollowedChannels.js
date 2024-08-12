@@ -21,9 +21,7 @@ export const getFollowedChannels = async (req, res) => {
       return res.status(404).send({ error: 'User not found.' });
     }
 
-    const response = await axios.get(
-      'https://twitch-clone-rtmp.vercel.app/api/streams',
-    );
+    const response = await axios.get('http://localhost:8000/api/streams');
 
     const liveStreams = [];
 

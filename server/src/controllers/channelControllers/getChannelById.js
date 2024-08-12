@@ -14,9 +14,9 @@ export const getChannelById = async (req, res) => {
 
     const user = await User.findOne({ channel: channelId }, { username: 1 });
 
-    const streamUrl = `https://twitch-clone-rtmp.vercel.app/live/${channel.streamKey}.flv`;
+    const streamUrl = `http://localhost:8000/live/${channel.streamKey}.flv`;
 
-    const response = await axios.get('https://twitch-clone-rtmp.vercel.app/api/streams');
+    const response = await axios.get('http://localhost:8000/api/streams');
 
     const liveStreams = [];
 
