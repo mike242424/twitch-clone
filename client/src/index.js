@@ -6,7 +6,7 @@ import DashboardPage from './DashboardPage/DashboardPage';
 import './index.css';
 import LoginPage from './Auth/LoginPage/LoginPage';
 import RegisterPage from './Auth/RegisterPage/RegisterPage';
-import NotFound from './components/.js';
+import NotFound from './components/NotFound.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
