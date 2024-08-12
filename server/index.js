@@ -16,7 +16,7 @@ const PORT = process.env.PORT || process.env.API_PORT;
 const app = express();
 
 const corsOptions = {
-  origin: 'https://twitch-clone-client-blond.vercel.app/',
+  origin: 'https://twitch-clone-client-blond.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
